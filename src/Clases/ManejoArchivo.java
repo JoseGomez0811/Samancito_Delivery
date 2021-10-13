@@ -24,6 +24,10 @@ public class ManejoArchivo {
     private int cedula;
     private int n = 0;
     
+    private String puntoA;
+    private String puntoB;
+    private int distancia;
+    
     File ficheroCliente = new File("test\\clientes.txt");
     
     public ManejoArchivo(){
@@ -56,6 +60,40 @@ public class ManejoArchivo {
             while((cadena =  br.readLine()) != null){
                 n++;
             }
+        }catch (Exception ex){
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+    }
+    
+    public void escribirDatosRutas(String puntoAA,String puntoBB,int distancia2){
+        puntoA = puntoAA;
+        puntoB = puntoBB;
+        distancia = distancia2;
+        
+        try{           
+            BufferedWriter escribir = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(ficheroCliente, true)));
+            escribir.write((n+1) + "," + nombre + "," + apellido + "," + cedula);
+            escribir.write("\n");
+            JOptionPane.showMessageDialog(null, "El usuario ha sido registrado exitosamente");
+            escribir.close();
+            n = 0;
+        }catch (Exception ex){
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+    }
+    
+    public void escribirDatosSamancito(String nombre2, String apellido2, int cedula2){
+        nombre = nombre2;
+        apellido = apellido2;
+        cedula = cedula2;
+        
+        try{           
+            BufferedWriter escribir = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(ficheroCliente, true)));
+            escribir.write((n+1) + "," + nombre + "," + apellido + "," + cedula);
+            escribir.write("\n");
+            JOptionPane.showMessageDialog(null, "El usuario ha sido registrado exitosamente");
+            escribir.close();
+            n = 0;
         }catch (Exception ex){
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }

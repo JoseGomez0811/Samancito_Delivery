@@ -42,9 +42,9 @@ public class VentanaNuevoCliente extends javax.swing.JFrame {
         campoApellido = new javax.swing.JTextField();
         campoCedula = new javax.swing.JTextField();
         btnRegistrar = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        comboPuntoA = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        comboPuntoB = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -65,16 +65,16 @@ public class VentanaNuevoCliente extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un punto inicial", "1", "2", "3", "4", "5", "6", "7", "A", "B", "C", "D", "E" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        comboPuntoA.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un punto inicial", "1", "2", "3", "4", "5", "6", "7", "A", "B", "C", "D", "E" }));
+        comboPuntoA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                comboPuntoAActionPerformed(evt);
             }
         });
 
         jLabel6.setText("Dirección 2:");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciones un punto final", "1", "2", "3", "4", "5", "6", "7", "A", "B", "C", "D", "E" }));
+        comboPuntoB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciones un punto final", "1", "2", "3", "4", "5", "6", "7", "A", "B", "C", "D", "E" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -92,9 +92,9 @@ public class VentanaNuevoCliente extends javax.swing.JFrame {
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addComponent(jLabel6)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(comboPuntoB, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(comboPuntoA, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3)
@@ -128,11 +128,11 @@ public class VentanaNuevoCliente extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboPuntoA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboPuntoB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addComponent(btnRegistrar)
                 .addGap(36, 36, 36))
@@ -153,11 +153,14 @@ public class VentanaNuevoCliente extends javax.swing.JFrame {
         campoNombre.setText(null);
         campoApellido.setText(null);
         campoCedula.setText(null);
+        
+        String puntoA = comboPuntoA.getSelectedItem().toString();
+        String puntoB = comboPuntoB.getSelectedItem().toString();
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void comboPuntoAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboPuntoAActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_comboPuntoAActionPerformed
 
     /**
      * @param args the command line arguments
@@ -199,8 +202,8 @@ public class VentanaNuevoCliente extends javax.swing.JFrame {
     private javax.swing.JTextField campoApellido;
     private javax.swing.JTextField campoCedula;
     private javax.swing.JTextField campoNombre;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> comboPuntoA;
+    private javax.swing.JComboBox<String> comboPuntoB;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
