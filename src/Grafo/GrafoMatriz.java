@@ -26,7 +26,7 @@ public class GrafoMatriz {
         
         for (int i = 0; i < n; i++){
             for (int j = 0; i < n; i++){
-                matAd[i][j] = 0;
+                matAd[i][j] = Integer.MAX_VALUE ; //numero infinito
             }
         }
         numeroVertices = 0;
@@ -51,17 +51,17 @@ public class GrafoMatriz {
         return (i < numeroVertices);
     }
     
-    public void nuevoArco(int va, int vb)throws Exception{
-        if(va < 0 || vb < 0){
+    public void nuevoArco(int va, int vb, int peso)throws Exception{
+        if(va < 0 || vb < 0 || va >= numeroVertices || vb >= numeroVertices){ // evitar crear una arista con vértice mayor a la cantidad de vértices que tenemos
             JOptionPane.showMessageDialog(null, "Vertice no existe");
         }
-        matAd[va][vb] = 1;
+        matAd[va][vb] = peso;
     }
     
     public boolean adyacente(int va, int vb) throws Exception{
-        if(va < 0 || vb < 0){
+        if(va < 0 || vb < 0 || va >= numeroVertices || vb >= numeroVertices){
             JOptionPane.showMessageDialog(null, "Vertice no existe");
         }
-        return matAd[va][vb] == 1;
+        return matAd[va][vb] != Integer.MAX_VALUE; //devolver falso si el valor es infinito 
     }
 }
