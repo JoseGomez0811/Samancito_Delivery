@@ -5,6 +5,8 @@
  */
 package Grafo;
 
+import Clases.Cliente;
+import Clases.Local;
 import javax.swing.JOptionPane;
 
 /**
@@ -64,4 +66,27 @@ public class GrafoMatriz {
         }
         return matAd[va][vb] != Integer.MAX_VALUE; //devolver falso si el valor es infinito 
     }
+    
+    public void cargarVerticeLocal(String linea){ //pasar linea de txt insertar el vertice
+        String[] componentes = linea.split(",");
+        String nombre = componentes[1];
+        String [] menu = componentes[2].split("/");
+        
+        Local local = new Local(nombre, menu);
+        Vertice vertice = new VerticeLocal(local);
+        vertice.asignarVertices(numeroVertices);
+        vertices[numeroVertices++] = vertice;
+    }
+    
+    public void cargarVerticeCliente(String linea){ //pasar linea de txt insertar el vertice
+        String[] componentes = linea.split(",");
+        String primerNombre = componentes[1];
+        String apellido = componentes[2];
+        int cedula = Integer.parseInt(componentes[3]);
+        Cliente cliente = new Cliente(primerNombre, apellido, cedula);
+        Vertice vertice = new VerticeCliente(cliente);
+        vertice.asignarVertices(numeroVertices);
+        vertices[numeroVertices++] = vertice;
+    }
+    
 }
