@@ -1,7 +1,0 @@
-1,Pepe,Gónzales,234354
-2,Stephania,Cominos,24574354
-3,Andrea,Stanislao,27385643
-4,Josefina,La Sifrina,6547584
-5,Rosa,Mosa,574543
-6,Eduardo,Petardo,4326534
-7,Enrique,Manrique,434543
