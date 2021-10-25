@@ -5,6 +5,8 @@
  */
 package Grafo;
 
+import java.awt.Color;
+
 /**
  *
  * @author Jose
@@ -32,6 +34,10 @@ public class Vertice {
     
     public String toString(){
         return nombre + "(" + numeroVertices + ")";
+    }
+
+    public Color getColorPreferencia() {
+        return Color.black;
     }
     
 }
