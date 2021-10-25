@@ -6,6 +6,7 @@
 package Grafo;
 
 import Clases.Cliente;
+import java.awt.Color;
 
 /**
  *
@@ -46,6 +47,11 @@ public class VerticeCliente extends Vertice{
 
     public void setNumeroVertices(int numeroVertices) {
         this.numeroVertices = numeroVertices;
+    }
+
+    @Override
+    public Color getColorPreferencia() {
+        return new Color(96, 148, 254);
     }
     
     
