@@ -42,9 +42,9 @@ public class VentanaNuevoCliente extends javax.swing.JFrame {
         campoApellido = new javax.swing.JTextField();
         campoCedula = new javax.swing.JTextField();
         btnRegistrar = new javax.swing.JButton();
-        comboPuntoA = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
-        comboPuntoB = new javax.swing.JComboBox<>();
+        campoA = new javax.swing.JTextField();
+        campoB = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -65,16 +65,7 @@ public class VentanaNuevoCliente extends javax.swing.JFrame {
             }
         });
 
-        comboPuntoA.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un punto inicial", "1", "2", "3", "4", "5", "6", "7", "A", "B", "C", "D", "E" }));
-        comboPuntoA.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboPuntoAActionPerformed(evt);
-            }
-        });
-
         jLabel6.setText("Dirección 2:");
-
-        comboPuntoB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciones un punto final", "1", "2", "3", "4", "5", "6", "7", "A", "B", "C", "D", "E" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -86,26 +77,25 @@ public class VentanaNuevoCliente extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(btnRegistrar)
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel5)
-                            .addGap(235, 235, 235)))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(jLabel6)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(comboPuntoB, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(comboPuntoA, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel2))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(campoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(campoApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(campoCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel1))))))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel6))
+                            .addGap(20, 20, 20)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(campoB, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
+                                .addComponent(campoA))
+                            .addGap(10, 10, 10)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel2))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(campoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(campoApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(campoCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -128,12 +118,12 @@ public class VentanaNuevoCliente extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(comboPuntoA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campoA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(comboPuntoB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                    .addComponent(campoB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addComponent(btnRegistrar)
                 .addGap(36, 36, 36))
         );
@@ -146,6 +136,8 @@ public class VentanaNuevoCliente extends javax.swing.JFrame {
         String nombre = campoNombre.getText();
         String apellido = campoApellido.getText();
         int cedula = Integer.parseInt(campoCedula.getText());
+        Object puntoA = campoA.getText();
+        Object puntoB = campoB.getText();
         
         objeto.leerDatosClientes();
         objeto.escribirDatosclientes(nombre, apellido, cedula);
@@ -154,13 +146,9 @@ public class VentanaNuevoCliente extends javax.swing.JFrame {
         campoApellido.setText(null);
         campoCedula.setText(null);
         
-        String puntoA = comboPuntoA.getSelectedItem().toString();
-        String puntoB = comboPuntoB.getSelectedItem().toString();
+         //String puntoA = comboPuntoA.getSelectedItem().toString();
+        //String puntoB = comboPuntoB.getSelectedItem().toString();
     }//GEN-LAST:event_btnRegistrarActionPerformed
-
-    private void comboPuntoAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboPuntoAActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_comboPuntoAActionPerformed
 
     /**
      * @param args the command line arguments
@@ -199,11 +187,11 @@ public class VentanaNuevoCliente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegistrar;
+    private javax.swing.JTextField campoA;
     private javax.swing.JTextField campoApellido;
+    private javax.swing.JTextField campoB;
     private javax.swing.JTextField campoCedula;
     private javax.swing.JTextField campoNombre;
-    private javax.swing.JComboBox<String> comboPuntoA;
-    private javax.swing.JComboBox<String> comboPuntoB;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

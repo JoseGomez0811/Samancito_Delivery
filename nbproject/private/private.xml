@@ -2,12 +2,16 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
-        <group/>
-=======
         <group>
+            <file>file:/C:/Users/Jose/Desktop/Proyecto%201/src/Interfaces/VentanaNuevoCamino.java</file>
             <file>file:/C:/Users/Jose/Desktop/Proyecto%201/src/Interfaces/VentanaOrdenar.java</file>
+            <file>file:/C:/Users/Jose/Desktop/Proyecto%201/src/Interfaces/VentanaAgregarPlato.java</file>
+            <file>file:/C:/Users/Jose/Desktop/Proyecto%201/src/Interfaces/VentanaEliminarPlato.java</file>
+            <file>file:/C:/Users/Jose/Desktop/Proyecto%201/src/Interfaces/VentanaNuevoCliente.java</file>
+            <file>file:/C:/Users/Jose/Desktop/Proyecto%201/src/Interfaces/VentanaAdmin.java</file>
+            <file>file:/C:/Users/Jose/Desktop/Proyecto%201/src/Interfaces/VentanaCliente.java</file>
+            <file>file:/C:/Users/Jose/Desktop/Proyecto%201/src/Interfaces/VentanaDriver.java</file>
+            <file>file:/C:/Users/Jose/Desktop/Proyecto%201/src/Interfaces/VentanaInicial.java</file>
         </group>
->>>>>>> Sebastian
     </open-files>
 </project-private>
