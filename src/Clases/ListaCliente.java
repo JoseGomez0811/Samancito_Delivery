@@ -58,7 +58,7 @@ public class ListaCliente {
                 mostrar_completo += temporal.getNombre() + "," + temporal.getApellido() + "," + temporal.getCedula() + "\n";
                 temporal = temporal.getSiguiente();
             }
-            JOptionPane.showMessageDialog(null, mostrar_completo);
+            JOptionPane.showMessageDialog(null,mostrar_completo);
         }
     }
 

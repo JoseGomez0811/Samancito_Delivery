@@ -49,5 +49,19 @@ public class GrupoListas {
     public void setPedidos(ListaPedidos pedidos) {
         this.pedidos = pedidos;
     }
+
+    /**
+     * @return the clientes
+     */
+    public ListaCliente getClientes() {
+        return clientes;
+    }
+
+    /**
+     * @param clientes the clientes to set
+     */
+    public void setClientes(ListaCliente clientes) {
+        this.clientes = clientes;
+    }
     
 }

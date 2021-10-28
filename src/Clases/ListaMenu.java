@@ -45,19 +45,19 @@ public class ListaMenu {
         }
     }
     
-    public void imprimir(){
+    public String imprimir(){
+        String mostrar_completo = "";
         if(esta_vacia()){
             System.out.println("La lista esta vacia.");
         }else{
             NodoPlato temporal;
             temporal = getPrimero();
-            String mostrar_completo = "";
             for (int i = 0; i < getTamaño(); i ++){
-               mostrar_completo += temporal.getPlatillo() + "\n";
-                temporal = temporal.getSiguiente();
+               mostrar_completo += temporal.getPlatillo() ;
+               temporal = temporal.getSiguiente();
             }
-           System.out.println(mostrar_completo);
         }
+        return mostrar_completo;
     }
 
     /**

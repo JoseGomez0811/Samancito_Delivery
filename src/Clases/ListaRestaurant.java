@@ -53,9 +53,19 @@ public class ListaRestaurant {
             NodoRestaurant temporal;
             temporal = getPrimero();
             String mostrar_completo = "";
+            String menu = "";
             for (int i = 0; i < getTamaño(); i ++){
-                mostrar_completo += temporal.getLetra() + "," + temporal.getNombre() + "," + temporal.getMenu () + "\n";
-                temporal = temporal.getSiguiente();
+                ListaMenu platillos = temporal.getMenu();
+                NodoPlato plato = platillos.getPrimero();
+                menu = "";  
+                for (int j = 0; j < platillos.getTamaño(); j++){
+                menu += plato.getPlatillo() + "/";
+                plato = plato.getSiguiente();
+                
+                }
+                mostrar_completo += temporal.getLetra() + "," + temporal.getNombre() + "," + menu + "\n";
+                temporal = temporal.getSiguiente(); 
+                
             }
             JOptionPane.showMessageDialog(null, mostrar_completo);
         }
