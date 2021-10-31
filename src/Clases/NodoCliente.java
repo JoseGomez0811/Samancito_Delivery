@@ -11,12 +11,12 @@ package Clases;
  */
 public class NodoCliente {
     private NodoCliente siguiente;
-    private String identificador;
+    private int identificador;
     private String nombre;
     private String apellido;
-    private String cedula;
+    private int cedula;
     
-    public NodoCliente(String identificador, String nombre, String apellido, String cedula){
+    public NodoCliente(int identificador, String nombre, String apellido, int cedula){
         this.identificador = identificador;
         this.siguiente = null;
         this.nombre = nombre;
@@ -69,28 +69,28 @@ public class NodoCliente {
     /**
      * @return the cedula
      */
-    public String getCedula() {
+    public int getCedula() {
         return cedula;
     }
 
     /**
      * @param cedula the cedula to set
      */
-    public void setCedula(String cedula) {
+    public void setCedula(int cedula) {
         this.cedula = cedula;
     }
 
     /**
      * @return the identificador
      */
-    public String getIdentificador() {
+    public int getIdentificador() {
         return identificador;
     }
 
     /**
      * @param identificador the identificador to set
      */
-    public void setIdentificador(String identificador) {
+    public void setIdentificador(int identificador) {
         this.identificador = identificador;
     }
     

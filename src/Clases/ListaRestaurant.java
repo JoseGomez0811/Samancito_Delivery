@@ -60,6 +60,17 @@ public class ListaRestaurant {
             JOptionPane.showMessageDialog(null, mostrar_completo);
         }
     }
+    
+    public NodoRestaurant buscarRestaurant(String restaurant){
+        NodoRestaurant restaurante = primero;
+        while(restaurant != null){
+            if(restaurante.getLetra().equals(restaurant)){
+                return restaurante;
+            }
+            restaurante = restaurante.getSiguiente();
+        }
+        return null;
+    } 
  
 
     /**

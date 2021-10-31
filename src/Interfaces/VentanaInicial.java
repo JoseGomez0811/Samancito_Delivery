@@ -16,6 +16,7 @@ public class VentanaInicial extends javax.swing.JFrame {
      */
     public VentanaInicial() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -37,10 +38,25 @@ public class VentanaInicial extends javax.swing.JFrame {
         jLabel1.setText("TIPO DE USUARIO");
 
         btnCliente.setText("Cliente");
+        btnCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClienteActionPerformed(evt);
+            }
+        });
 
         btnDriver.setText("Driver");
+        btnDriver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDriverActionPerformed(evt);
+            }
+        });
 
         btnAdmin.setText("Administrador");
+        btnAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdminActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -72,6 +88,26 @@ public class VentanaInicial extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteActionPerformed
+        // TODO add your handling code here:
+        
+        VentanaAdmin vencliente = new VentanaAdmin();
+        vencliente.setVisible(true);
+    }//GEN-LAST:event_btnClienteActionPerformed
+
+    private void btnDriverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDriverActionPerformed
+        // TODO add your handling code here:
+        VentanaDriver vendriver = new VentanaDriver();
+        vendriver.setVisible(true);
+    }//GEN-LAST:event_btnDriverActionPerformed
+
+    private void btnAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdminActionPerformed
+        // TODO add your handling code here:
+        
+        VentanaCliente venadmin = new VentanaCliente();
+        venadmin.setVisible(true);
+    }//GEN-LAST:event_btnAdminActionPerformed
 
     /**
      * @param args the command line arguments

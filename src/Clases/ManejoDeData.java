@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
  */
 public class ManejoDeData {
     
-    File masterdata = new File("test\\MasterData");
+    File masterdata = new File("test\\samancito.txt");
     
     public ManejoDeData(){
     }
@@ -27,12 +27,18 @@ public class ManejoDeData {
     public void leer_txt(){
         String linea;
         String txt = "";
-        String path = "test\\MasterData.txt";
+        String path = "test\\samancito.txt";
         File file = new File(path);
+<<<<<<< Updated upstream
+=======
+        ListaRestaurant restaurantes = new ListaRestaurant();
+        ListaCliente clientes = new ListaCliente();
+        ListaPedidos pedidos = new ListaPedidos();
+        ListaRutas rutas = new ListaRutas();
+>>>>>>> Stashed changes
         try{
             if (!file.exists()){
                 file.createNewFile();
-                //System.out.println("xd"); entra
             }else{
                 FileReader fr = new FileReader(file);
                 BufferedReader br = new BufferedReader(fr);
@@ -67,11 +73,18 @@ public class ManejoDeData {
                             i++;
                             while(!txt_split[i].contains("Pedidos")){
                                 String [] clientes_split = txt_split[i].split(",");
+<<<<<<< Updated upstream
                                 ListaCliente clientes = new ListaCliente();
                                 for(int j = 0; j < clientes_split.length; j++){
                                     NodoCliente cliente = new NodoCliente(clientes_split[0],clientes_split[1],clientes_split[2],clientes_split[3]);
                                     clientes.agregar_al_final(cliente);
                                 }
+=======
+                                int identificador = Integer.parseInt(clientes_split[0]);
+                                int cedula = Integer.parseInt(clientes_split[3]);
+                                NodoCliente cliente = new NodoCliente(identificador,clientes_split[1],clientes_split[2],cedula);  
+                                clientes.agregar_al_final(cliente);
+>>>>>>> Stashed changes
                                 i++;
                             }
                         }else if (txt_split[i].contains("Pedidos")){
@@ -85,25 +98,102 @@ public class ManejoDeData {
                                 }
                                 i++;
                             }
-                        //}else if (txt_split[i].contains("Rutas")){
-                        //    i++;
-                        //    while(!txt_split[i].contains("")){
+                        }
+                        if (txt_split[i].contains("Rutas")){
+                            i++;
+                            while(i < txt_split.length){
+                                String [] rutas_split = txt_split[i].split(","); 
+                                NodoRuta ruta = new NodoRuta(rutas_split[0],rutas_split[1],rutas_split[2]);
+                                rutas.agregar_al_final(ruta);
+                                i++;
+                            }
                             
-                        //    }
                         }
                         
                     }
                     br.close();
                     }
                 }
+<<<<<<< Updated upstream
                 JOptionPane.showMessageDialog(null,"Lectura exitosa");
+=======
+>>>>>>> Stashed changes
             }catch(Exception er){
                 JOptionPane.showMessageDialog(null,"Ocurrio un problema al leer el archivo");
             }
         
+<<<<<<< Updated upstream
     }
     
     public void guardar_txt(ListaCliente clientes, ListaMenu menu, ListaPedidos pedidos, ListaRestaurant restaurantes){
+=======
+            return new GrupoListas(clientes,restaurantes,pedidos,rutas);
+    }
+    
+    public void guardar_txt( ListaRestaurant restaurantes, ListaCliente clientes, ListaPedidos pedidos, ListaRutas rutas){
+        String restaurantes_actuales = "";
+        if (!restaurantes.esta_vacia()) {
+            NodoRestaurant temp = restaurantes.getPrimero();
+            for(int i = 0; i < restaurantes.getTamaño(); i++){
+                ListaMenu platillos = temp.getMenu();
+                NodoPlato plato = platillos.getPrimero();
+                String menu = "";  
+                for (int j = 0; j < platillos.getTamaño(); j++){
+                menu += plato.getPlatillo() + "/";
+                plato = plato.getSiguiente();
+            }
+                restaurantes_actuales += temp.getLetra() + "," + temp.getNombre() + "," + menu + "\n";
+                temp = temp.getSiguiente();
+            }
+                
+        }
+        String clientes_actuales = "";
+        if (!clientes.esta_vacia()) {
+            NodoCliente temp = clientes.getPrimero();
+            for(int i = 0; i < clientes.getTamaño(); i++){
+                clientes_actuales += temp.getIdentificador() + "," + temp.getNombre() + "," + temp.getApellido() + "," + temp.getCedula() + "\n";
+                temp = temp.getSiguiente();
+            }
+        }
+        String pedidos_actuales = "";
+        if (!pedidos.esta_vacia()) {
+            NodoPedido temp = pedidos.getPrimero();
+            for(int i = 0; i < pedidos.getTamaño(); i++){
+                pedidos_actuales += temp.getCliente() + "," + temp.getRestaurant() + "," + temp.getOrden() + "\n";
+                temp = temp.getSiguiente();
+            }
+        }
+        String rutas_actuales = "";
+        if (!rutas.esta_vacia()) {
+            NodoRuta temp = rutas.getPrimero();
+            for(int i = 0; i < rutas.getTamaño(); i++){
+                rutas_actuales += temp.getPosicion1() + "," + temp.getPosicion2() + "," + temp.getPosicion3() + "\n";
+                temp = temp.getSiguiente();
+            }
+        }
+        try{
+            PrintWriter pw = new PrintWriter("test\\samancito.txt");
+            pw.print("Restaurantes");
+            pw.print("\n");
+            pw.print(restaurantes_actuales);
+            pw.print("Clientes");
+            pw.print("\n");
+            pw.print(clientes_actuales);
+            pw.print("Pedidos");
+            pw.print("\n");
+            pw.print(pedidos_actuales);
+            pw.print("Rutas");
+            pw.print("\n");
+            pw.print(rutas_actuales);
+            pw.close();
+        
+        }catch(Exception err){
+            JOptionPane.showMessageDialog(null, "Ocurrio un error al guardar");
+        
+        }
+        
+        
+>>>>>>> Stashed changes
     }
 }
 
