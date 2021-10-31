@@ -5,6 +5,17 @@
  */
 package Interfaces;
 
+import Clases.ManejoDeData;
+import Clases.GrupoListas;
+import Clases.ListaCliente;
+import Clases.ListaMenu;
+import Clases.NodoCliente;
+import Clases.ListaPedidos;
+import Clases.ListaRestaurant;
+import Clases.ListaRutas;
+import Clases.NodoPlato;
+import Clases.NodoRestaurant;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Jose
@@ -14,6 +25,13 @@ public class VentanaEliminarPlato extends javax.swing.JFrame {
     /**
      * Creates new form VentanaEliminarPlato
      */
+    ManejoDeData objeto = new ManejoDeData();
+    GrupoListas grupo_listas = objeto.leer_txt();
+    ListaPedidos pedidos = grupo_listas.getPedidos();
+    ListaRestaurant restaurantes = grupo_listas.getRestaurantes();
+    ListaCliente clientes = grupo_listas.getClientes();
+    ListaRutas rutas = grupo_listas.getRutas();
+    
     public VentanaEliminarPlato() {
         initComponents();
     }
@@ -29,85 +47,144 @@ public class VentanaEliminarPlato extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        campoComida = new javax.swing.JTextField();
-        campoBebida = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        campoProducto = new javax.swing.JTextField();
+        BotonEliminar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         campoRestaurante = new javax.swing.JTextField();
+        botonRestaurantes = new javax.swing.JButton();
+        BotonMenu = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("ELIMINAR PLATO");
 
-        jLabel2.setText("Comida:");
+        jLabel2.setText("Producto a eliminar:");
 
-        jLabel3.setText("Bebida:");
-
-        jButton1.setText("Eliminar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        BotonEliminar.setText("Eliminar");
+        BotonEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BotonEliminarActionPerformed(evt);
             }
         });
 
         jLabel4.setText("Restaurante:");
+
+        botonRestaurantes.setText("Lista de Restaurantes");
+        botonRestaurantes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonRestaurantesActionPerformed(evt);
+            }
+        });
+
+        BotonMenu.setText("Ver Menu");
+        BotonMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonMenuActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Ingrese solo la letra del resturante");
+
+        jLabel5.setText("Ingrese el numero del producto");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel4)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(campoRestaurante))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel2)
-                                .addComponent(jLabel3))
-                            .addGap(18, 18, 18)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel1)
-                                .addComponent(campoComida)
-                                .addComponent(campoBebida, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)))))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(botonRestaurantes)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(26, 26, 26)
+                                .addComponent(BotonMenu)))
+                        .addGap(51, 51, 51)
+                        .addComponent(BotonEliminar))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(38, 38, 38)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(campoRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(campoProducto))))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
+                .addGap(26, 26, 26)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(campoRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(campoComida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(campoBebida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addGap(29, 29, 29))
+                    .addComponent(campoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel5)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addComponent(BotonEliminar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(botonRestaurantes)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(BotonMenu)))
+                .addGap(20, 20, 20))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void BotonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarActionPerformed
         // TODO add your handling code here:
+        try{
+            String restaurante = campoRestaurante.getText();
+            int producto = Integer.parseInt(campoProducto.getText()) ;
+            NodoRestaurant restaurant = restaurantes.buscarRestaurant(restaurante);
+            ListaMenu menu = restaurant.getMenu();
+            NodoPlato plato_eliminar = menu.buscarPlato(producto);
+            menu.eliminarPlato(plato_eliminar);
+            objeto.guardar_txt(restaurantes, clientes, pedidos, rutas);
+            JOptionPane.showMessageDialog(null,"Producto eliminado con exito");
+        }catch(Exception er){
+            JOptionPane.showMessageDialog(null,"Por favor ingrese valores validos");
+        }
+    }//GEN-LAST:event_BotonEliminarActionPerformed
+
+    private void botonRestaurantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRestaurantesActionPerformed
+        // TODO add your handling code here:
+        restaurantes.imprimir();
+    }//GEN-LAST:event_botonRestaurantesActionPerformed
+
+    private void BotonMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonMenuActionPerformed
+          // TODO add your handling code here:
         String restaurante = campoRestaurante.getText();
-        String comida = campoComida.getText();
-        String bebida = campoBebida.getText();
-    }//GEN-LAST:event_jButton1ActionPerformed
+        try{
+            if(!restaurante.isBlank()){
+                NodoRestaurant restaurant = restaurantes.buscarRestaurant(restaurante);
+                ListaMenu menu = restaurant.getMenu();
+                menu.imprimir();
+            }
+        }catch(Exception er){
+            JOptionPane.showMessageDialog(null,"Por favor ingresa el restaurant para poder ver el menu");
+        }
+    }//GEN-LAST:event_BotonMenuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -145,13 +222,15 @@ public class VentanaEliminarPlato extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField campoBebida;
-    private javax.swing.JTextField campoComida;
+    private javax.swing.JButton BotonEliminar;
+    private javax.swing.JButton BotonMenu;
+    private javax.swing.JButton botonRestaurantes;
+    private javax.swing.JTextField campoProducto;
     private javax.swing.JTextField campoRestaurante;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     // End of variables declaration//GEN-END:variables
 }

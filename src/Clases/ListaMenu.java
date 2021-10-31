@@ -5,6 +5,8 @@
  */
 package Clases;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author SebasBD
@@ -24,40 +26,70 @@ public class ListaMenu {
         return getPrimero() == null;
     }
     
-    public void agregar_al_inicio(NodoPlato plato){
-        if(esta_vacia()){
-            setPrimero(plato);
-            setUltimo(plato);
-        }else{
-            plato.setSiguiente(getPrimero());
-            setPrimero(plato);
-        }
-        setTamaño(getTamaño() + 1);
+    public void vaciar(){
+        this.setPrimero(ultimo = null);
+        this.setTamaño(0);
+        
     }
     
     public void agregar_al_final(NodoPlato plato){
-        if(esta_vacia()){
-            agregar_al_inicio(plato);
+        if(this.esta_vacia()){
+            primero = ultimo = plato;
         }else{
-            getUltimo().setSiguiente(plato);
-            setUltimo(plato);
-            setTamaño(getTamaño() + 1);
+            ultimo.setSiguiente(plato);
+            plato.setAnterior(ultimo);
+            ultimo = plato;
         }
+        tamaño ++;
+        plato.setIdentificador(tamaño); 
+    }
+    public NodoPlato buscarPlato(int identificador){
+        NodoPlato plato = primero;
+        while(plato != null){
+            if(plato.getIdentificador() == identificador){
+                return plato;
+            }
+            plato = plato.getSiguiente();
+        }
+        return null;
+    } 
+    
+    public void eliminarPlato(NodoPlato plato){
+        if (plato != null){
+            if (tamaño == 1 ){
+                this.vaciar();
+            }else{
+                if(primero == plato){
+                    primero = primero.getSiguiente();
+                    primero.setAnterior(null);
+                }else if(ultimo == plato){
+                    ultimo = ultimo.getAnterior();
+                    ultimo.setSiguiente(null);
+                }else{
+                    plato.getAnterior().setSiguiente(plato.getSiguiente());
+                    plato.getSiguiente().setAnterior(plato.getAnterior());
+                }
+                tamaño --;
+            }
+        }
+        
     }
     
-    public void imprimir(){
+
+    public String imprimir(){
+        String mostrar_completo = "";
         if(esta_vacia()){
-            System.out.println("La lista esta vacia.");
+            JOptionPane.showMessageDialog(null,"La lista esta vacia.");
         }else{
             NodoPlato temporal;
             temporal = getPrimero();
-            String mostrar_completo = "";
             for (int i = 0; i < getTamaño(); i ++){
-               mostrar_completo += temporal.getPlatillo() + "\n";
-                temporal = temporal.getSiguiente();
+               mostrar_completo += temporal.getIdentificador() + ":" + temporal.getPlatillo() + "/";
+               temporal = temporal.getSiguiente();
             }
-           System.out.println(mostrar_completo);
+            JOptionPane.showMessageDialog(null, mostrar_completo);
         }
+        return mostrar_completo;
     }
 
     /**

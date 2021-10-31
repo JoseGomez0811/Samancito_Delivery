@@ -5,6 +5,18 @@
  */
 package Interfaces;
 
+import Clases.ManejoDeData;
+import Clases.GrupoListas;
+import Clases.ListaCliente;
+import Clases.ListaMenu;
+import Clases.NodoCliente;
+import Clases.ListaPedidos;
+import Clases.ListaRestaurant;
+import Clases.ListaRutas;
+import Clases.NodoPlato;
+import Clases.NodoRestaurant;
+import javax.swing.JOptionPane;
+import Clases.Funciones;
 /**
  *
  * @author Jose
@@ -14,6 +26,14 @@ public class VentanaAgregarPlato extends javax.swing.JFrame {
     /**
      * Creates new form VentanaAgregarPlato
      */
+    ManejoDeData objeto = new ManejoDeData();
+    GrupoListas grupo_listas = objeto.leer_txt();
+    ListaPedidos pedidos = grupo_listas.getPedidos();
+    ListaRestaurant restaurantes = grupo_listas.getRestaurantes();
+    ListaCliente clientes = grupo_listas.getClientes();
+    ListaRutas rutas = grupo_listas.getRutas();
+    Funciones funcion = new Funciones();
+    
     public VentanaAgregarPlato() {
         initComponents();
     }
@@ -30,12 +50,12 @@ public class VentanaAgregarPlato extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         campoRestaurante = new javax.swing.JTextField();
-        campoComida = new javax.swing.JTextField();
-        campoBebida = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        campoProducto = new javax.swing.JTextField();
+        BotonRestaurantes = new javax.swing.JButton();
+        BotonAgregar = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -43,18 +63,23 @@ public class VentanaAgregarPlato extends javax.swing.JFrame {
 
         jLabel2.setText("Restaurante:");
 
-        jLabel3.setText("Comida:");
+        jLabel3.setText("Producto:");
 
-        jLabel4.setText("Bebida:");
-
-        jButton1.setText("Lista de restaurantes");
-
-        jButton2.setText("Agregar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        BotonRestaurantes.setText("Lista de restaurantes");
+        BotonRestaurantes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                BotonRestaurantesActionPerformed(evt);
             }
         });
+
+        BotonAgregar.setText("Agregar");
+        BotonAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonAgregarActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Ingrese solo la letra del restaurante");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -64,27 +89,33 @@ public class VentanaAgregarPlato extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(43, 43, 43)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(47, 47, 47)
-                                .addComponent(campoBebida, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(BotonRestaurantes)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(BotonAgregar))
+                            .addComponent(jLabel3)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton2))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3))
+                                .addComponent(jLabel2)
                                 .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(campoComida, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(campoRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(campoRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(52, 52, 52))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(104, 104, 104)
                         .addComponent(jLabel1)))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(56, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(campoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(117, 117, 117))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(162, 162, 162))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(87, 87, 87))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -95,30 +126,48 @@ public class VentanaAgregarPlato extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(campoRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4)
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(campoComida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(campoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(1, 1, 1)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(campoBebida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap(86, Short.MAX_VALUE))
+                    .addComponent(BotonRestaurantes)
+                    .addComponent(BotonAgregar))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void BotonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAgregarActionPerformed
         // TODO add your handling code here:
         String restaurante = campoRestaurante.getText();
-        String comida = campoComida.getText();
-        String bebida = campoBebida.getText();
-    }//GEN-LAST:event_jButton2ActionPerformed
+        String producto = campoProducto.getText();
+        if (!restaurante.isBlank() && producto.isBlank()){
+            if(restaurantes.buscarRestaurant(restaurante).equals(restaurante)){
+                NodoRestaurant restaurant = restaurantes.buscarRestaurant(restaurante);
+                ListaMenu menu = restaurant.getMenu();
+                NodoPlato nuevo_plato = new NodoPlato(producto);
+                menu.agregar_al_final(nuevo_plato);
+                JOptionPane.showMessageDialog(null,"Producto añadido con exito");
+            }else{
+                JOptionPane.showMessageDialog(null,"Ese restaurant no existe en la base de datos");
+            }
+        }else{
+            JOptionPane.showMessageDialog(null,"Por favor ingrese datos validos");
+        }
+        
+    }//GEN-LAST:event_BotonAgregarActionPerformed
+
+    private void BotonRestaurantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRestaurantesActionPerformed
+        // TODO add your handling code here:
+        restaurantes.imprimir();
+    }//GEN-LAST:event_BotonRestaurantesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -156,14 +205,14 @@ public class VentanaAgregarPlato extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField campoBebida;
-    private javax.swing.JTextField campoComida;
+    private javax.swing.JButton BotonAgregar;
+    private javax.swing.JButton BotonRestaurantes;
+    private javax.swing.JTextField campoProducto;
     private javax.swing.JTextField campoRestaurante;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     // End of variables declaration//GEN-END:variables
 }
