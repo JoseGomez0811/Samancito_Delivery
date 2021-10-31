@@ -75,42 +75,19 @@ public class ListaMenu {
         
     }
     
-<<<<<<< HEAD
+
     public String imprimir(){
         String mostrar_completo = "";
-=======
-    public void imprimir(){
-<<<<<<< Updated upstream
-=======
-        String mostrar_completo = "";
->>>>>>> Stashed changes
->>>>>>> Sebastian
         if(esta_vacia()){
             JOptionPane.showMessageDialog(null,"La lista esta vacia.");
         }else{
             NodoPlato temporal;
             temporal = getPrimero();
-<<<<<<< HEAD
-=======
-<<<<<<< Updated upstream
-            String mostrar_completo = "";
->>>>>>> Sebastian
-            for (int i = 0; i < getTamaño(); i ++){
-               mostrar_completo += temporal.getPlatillo() ;
-               temporal = temporal.getSiguiente();
-            }
-<<<<<<< HEAD
-=======
-           System.out.println(mostrar_completo);
-=======
-            System.out.println(temporal.getPlatillo());
             for (int i = 0; i < getTamaño(); i ++){
                mostrar_completo += temporal.getIdentificador() + ":" + temporal.getPlatillo() + "/";
                temporal = temporal.getSiguiente();
             }
             JOptionPane.showMessageDialog(null, mostrar_completo);
->>>>>>> Stashed changes
->>>>>>> Sebastian
         }
         return mostrar_completo;
     }

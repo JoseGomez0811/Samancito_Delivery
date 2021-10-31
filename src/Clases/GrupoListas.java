@@ -51,11 +51,7 @@ public class GrupoListas {
     public void setPedidos(ListaPedidos pedidos) {
         this.pedidos = pedidos;
     }
-<<<<<<< HEAD
-=======
-<<<<<<< Updated upstream
-=======
->>>>>>> Sebastian
+
 
     /**
      * @return the clientes
@@ -70,8 +66,6 @@ public class GrupoListas {
     public void setClientes(ListaCliente clientes) {
         this.clientes = clientes;
     }
-<<<<<<< HEAD
-=======
 
     /**
      * @return the rutas
@@ -86,7 +80,4 @@ public class GrupoListas {
     public void setRutas(ListaRutas rutas) {
         this.rutas = rutas;
     }
->>>>>>> Stashed changes
->>>>>>> Sebastian
-    
 }
