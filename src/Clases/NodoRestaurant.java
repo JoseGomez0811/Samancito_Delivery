@@ -15,6 +15,14 @@ public class NodoRestaurant {
     private String nombre;
     private ListaMenu menu;
     
+    /**
+     * Constructor de la clase NodoRestaurant
+     * @param letra El parámetro letra define el identificardor del restaurante 
+     * escogido por el usuario
+     * @param nombre El parámetro nombre define el nombre del restaurante escogido
+     * por el usuario
+     * @param menu El parámetro menu define el platillo que ofrece el restaurante
+     */
     public NodoRestaurant(String letra, String nombre, ListaMenu menu){
         this.siguiente = null;
         this.letra = letra;

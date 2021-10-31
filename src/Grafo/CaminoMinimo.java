@@ -16,6 +16,11 @@ public class CaminoMinimo {
     private boolean [] F;
     private int s, n; // vértice origen y número de vértices
     
+    /**
+     * Constructor de la clase CaminoMinimo
+     * @param gp El parámetro gp llama a la clase GrafMatPeso
+     * @param origen El parámetro origen define el punto de partida del grafo
+     */
     public CaminoMinimo(GrafMatPeso gp, int origen){
         n = gp.numeroDeVertice();
         s = origen;
@@ -24,6 +29,10 @@ public class CaminoMinimo {
         D = new int [n];
         F = new boolean [n];
     }
+    
+    /**
+    *Método que determina el camino más corto para el recorrido del grafo
+    */
     public void caminoMinimos(){
         // valores iniciales
         for (int i = 0; i < n; i++){
@@ -47,6 +56,11 @@ public class CaminoMinimo {
             }
         }
     }
+    
+    /**
+    *Método que determina eñ camino más corto del grafo
+    *@return retorna de distancia minima del recorrido
+    */
     private int minimo(){
         int mx = GrafMatPeso.INFINITO;
         int v = 1;

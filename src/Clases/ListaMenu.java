@@ -16,22 +16,36 @@ public class ListaMenu {
     private NodoPlato ultimo;
     private int tamaño;
     
+    /**
+     * Constructor de la clase ListaMenu
+     */
     public ListaMenu(){
         this.primero = null;
         this.ultimo = null;
         this.tamaño = 0;   
     }
     
+    /**
+     * Método que determina si la lista está vacía
+     * @return Retorna null en el nodo primero si la lista está vacía
+     */
     public boolean esta_vacia(){
         return getPrimero() == null;
     }
     
+    /**
+     * Metódo que elimina todos los elementos de la lista
+     */
     public void vaciar(){
         this.setPrimero(ultimo = null);
         this.setTamaño(0);
         
     }
     
+    /**
+     * Método que agregar un nuevo elemento al final de la lista
+     * @param plato El parámetro plato define... 
+     */
     public void agregar_al_final(NodoPlato plato){
         if(this.esta_vacia()){
             primero = ultimo = plato;
@@ -43,6 +57,12 @@ public class ListaMenu {
         tamaño ++;
         plato.setIdentificador(tamaño); 
     }
+    
+    /**
+     * Método que busca un elemento de la lista
+     * @param identificador El parámetro identificador define el ID del plato que desea buscar
+     * @return Retorna null si el plato no es contrado
+     */
     public NodoPlato buscarPlato(int identificador){
         NodoPlato plato = primero;
         while(plato != null){
@@ -54,6 +74,10 @@ public class ListaMenu {
         return null;
     } 
     
+    /**
+     * Método que elimina un elemento
+     * @param plato El parámetro plato define el plato que se desea eliminar
+     */
     public void eliminarPlato(NodoPlato plato){
         if (plato != null){
             if (tamaño == 1 ){
@@ -75,7 +99,9 @@ public class ListaMenu {
         
     }
     
-
+    /**
+     * Método que imprime la lista creada
+     */
     public String imprimir(){
         String mostrar_completo = "";
         if(esta_vacia()){

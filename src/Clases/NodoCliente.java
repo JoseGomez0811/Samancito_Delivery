@@ -16,6 +16,13 @@ public class NodoCliente {
     private String apellido;
     private int cedula;
     
+    /**
+     * Constructor de la clase NodoCliente
+     * @param identificador El parámetro identificador defina el ID del usuario 
+     * @param nombre El parámetro nombre define el nombre del usuario
+     * @param apellidoEl parámetro nombre define el apellido del usuario
+     * @param cedula El parámetro cedula define el número de cédula del usuario
+     */
     public NodoCliente(int identificador, String nombre, String apellido, int cedula){
         this.identificador = identificador;
         this.siguiente = null;

@@ -15,7 +15,14 @@ public class GrupoListas {
     private ListaPedidos pedidos;
     private ListaRutas rutas;
     
-    
+    /**
+     * Constructor de la clase GrupoListas
+     * @param clientes El parámetro clientes define el listado de clientes
+     * @param restaurantes El parámetro restaurantes define el lista de restaurantes
+     * @param pedidos El parámetro pedidos define el listado de pedidos
+     * @param rutas El parámetro rutas define el listado de rutas
+     */
+
     public GrupoListas(ListaCliente clientes, ListaRestaurant restaurantes, ListaPedidos pedidos, ListaRutas rutas){
         this.clientes = clientes;
         this.restaurantes = restaurantes;

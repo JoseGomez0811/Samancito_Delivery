@@ -16,6 +16,13 @@ public class NodoPedido {
     private String restaurant;
     private String orden;
     
+    /**
+     * Constructor de la clase NodoPedido
+     * @param cliente El parámetro cliente define el cliente que ha realizado el pedido
+     * @param restaurant El parámetro restaurant define el restaurante escogido por 
+     * el usuario 
+     * @param orden El parámetro orden define el plato escogido por el usuario
+     */
     public NodoPedido(String cliente, String restaurant, String orden){
         this.siguiente = null;
         this.cliente = cliente;

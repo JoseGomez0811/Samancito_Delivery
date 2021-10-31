@@ -15,16 +15,27 @@ public class ListaPedidos {
     private NodoPedido ultimo;
     private int tamaño;
     
+    /**
+     * Constructor de la clase LsitaPedidos
+     */
     public ListaPedidos(){
         this.primero = null;
         this.ultimo = null;
         this.tamaño = 0;
     }
     
+    /**
+     * Método que determina si la lista está vacía
+     * @return Retorna null en el nodo primero si la lista está vacía
+     */
     public boolean esta_vacia(){
         return getPrimero() == null;
     }
     
+    /**
+     * Método que agrega un nuevo elemento al final de la lista
+     * @param pedido El parámetro pedido define...
+     */
     public void agregar_al_final(NodoPedido pedido){
         if(this.esta_vacia()){
             primero = ultimo = pedido;
@@ -36,6 +47,9 @@ public class ListaPedidos {
         tamaño ++;
     }
     
+    /**
+     * Método que imprime la lista creada
+     */
     public void imprimir(){
         if(esta_vacia()){
             JOptionPane.showMessageDialog(null, "La lista esta vacia.");
@@ -51,6 +65,13 @@ public class ListaPedidos {
         }
     }
     
+    /**
+     * Método que busca un elemento en la lista
+     * @param cliente el parámetro cliente define el nombre del cliente que realizó el pedido
+     * @param restaurant El parámetro restaurante defina el restaurante al cual el cliente le hizo el pedido
+     * @param orden El parámetro orden define el plato escogido por el cliente
+     * @return 
+     */
     public NodoPedido buscarPedido(String cliente, String restaurant, String orden){
         NodoPedido pedido = primero;
         while(pedido != null){
@@ -62,12 +83,19 @@ public class ListaPedidos {
         return null;
     } 
     
+    /**
+     * Metódo que elimina todos los elementos de la lista
+     */
     public void vaciar(){
         this.setPrimero(ultimo = null);
         this.setTamaño(0);
         
     }
     
+    /**
+     * Método que elimina un elemento
+     * @param pedido El parámetro pedido define el pedido que se desea eliminar
+     */
     public void eliminarPedido(NodoPedido pedido){
         if (pedido != null){
             if (tamaño == 1 ){

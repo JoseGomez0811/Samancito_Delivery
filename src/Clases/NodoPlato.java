@@ -15,6 +15,10 @@ public class NodoPlato {
     private String platillo;
     private int identificador;
     
+    /**
+     * Constructor de la clase NodoPlato
+     * @param platillo El parámetro platillo define la comida escogida por el usuario
+     */
     public NodoPlato(String platillo){
         this.siguiente = null;
         this.platillo = platillo;

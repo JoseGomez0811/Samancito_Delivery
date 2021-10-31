@@ -16,16 +16,27 @@ public class ListaCliente {
     private NodoCliente ultimo;
     private int tamaño;
     
+    /**
+     * Constructor de la clase ListaCliente
+     */
     public ListaCliente(){
         this.primero = null;
         this.ultimo = null;
         this.tamaño = 0;
     }
     
+    /**
+     * Método que determina si la lista está vacía
+     * @return Retorna null si la lista está vacía
+     */
     public boolean esta_vacia(){
         return getPrimero() == null;
     }
     
+    /**
+     * Método que agregar un nuevo elemento al principio de la lista
+     * @param cliente El parámetro cliente define...
+     */
     public void agregar_al_inicio(NodoCliente cliente){
         if(esta_vacia()){
             setPrimero(cliente);
@@ -37,6 +48,10 @@ public class ListaCliente {
         setTamaño(getTamaño() + 1);
     }
     
+    /**
+     * Método que agrega un nuevo elemento el final de la lista
+     * @param cliente El parámetro cliente define...
+     */
     public void agregar_al_final(NodoCliente cliente){
         if(esta_vacia()){
             agregar_al_inicio(cliente);
@@ -47,6 +62,9 @@ public class ListaCliente {
         }
     }
     
+    /**
+     *Método que imprime la lista creada
+     */
     public void imprimir(){
         if(esta_vacia()){
             JOptionPane.showMessageDialog(null, "La lista esta vacia.");

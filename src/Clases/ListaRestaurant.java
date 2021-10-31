@@ -16,16 +16,27 @@ public class ListaRestaurant {
     private NodoRestaurant ultimo;
     private int tamaño;
     
+    /**
+     * Constructor de la clase ListaRestaurante
+     */
     public ListaRestaurant(){
         this.primero = null;
         this.ultimo = null;
         this.tamaño = 0;
     }
     
+    /**
+     * Método que determina si la lista está vacía 
+     * @return Retorna null en el nodo primero si la lista está vacía
+     */
     public boolean esta_vacia(){
         return getPrimero() == null;
     }
     
+    /**
+     * Método que agrega un nuevo elemento al principio de la lista
+     * @param restaurant El parámetro restaurante define...
+     */
     public void agregar_al_inicio(NodoRestaurant restaurant){
         if(esta_vacia()){
             setPrimero(restaurant);
@@ -37,6 +48,10 @@ public class ListaRestaurant {
         setTamaño(getTamaño() + 1);
     }
     
+    /**
+     * Método que agrega un nuevo elemento al final de la lista
+     * @param restaurant El parámetro restaurante define...
+     */
     public void agregar_al_final(NodoRestaurant restaurant){
         if(esta_vacia()){
             agregar_al_inicio(restaurant);
@@ -46,6 +61,10 @@ public class ListaRestaurant {
             setTamaño(getTamaño() + 1);
         }
     }
+    
+    /**
+     *Método que imprime la lista creada
+     */
     public void imprimir(){
         if(esta_vacia()){
             JOptionPane.showMessageDialog(null, "La lista esta vacia.");
@@ -71,6 +90,11 @@ public class ListaRestaurant {
         }
     }
     
+    /**
+     * Método que busca un elemento en la lista
+     * @param restaurant El parámetro restaurant define el restaurante que desea buscar
+     * @return Retorna null si el plato no es contrado
+     */
     public NodoRestaurant buscarRestaurant(String restaurant){
         NodoRestaurant restaurante = primero;
         while(restaurant != null){

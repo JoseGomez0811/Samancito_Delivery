@@ -21,9 +21,15 @@ public class ManejoDeData {
     
     File masterdata = new File("test\\samancito.txt");
     
+    /**
+     * Constructor de la clase ManejoDeData
+     */
     public ManejoDeData(){
     }
     
+    /**
+     * Método que lee el arcivo MasterData.txt
+     */
     public GrupoListas leer_txt(){
         String linea;
         String txt = "";
@@ -108,7 +114,9 @@ public class ManejoDeData {
             return new GrupoListas(clientes,restaurantes,pedidos,rutas);
     }
     
-    
+    /**
+     * Método que escribe en el arcivo MasterData.txt
+     */
     public void guardar_txt( ListaRestaurant restaurantes, ListaCliente clientes, ListaPedidos pedidos, ListaRutas rutas){
         String restaurantes_actuales = "";
         if (!restaurantes.esta_vacia()) {
