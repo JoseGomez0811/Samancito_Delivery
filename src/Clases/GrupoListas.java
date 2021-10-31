@@ -13,12 +13,14 @@ public class GrupoListas {
     private ListaCliente clientes;
     private ListaRestaurant restaurantes;
     private ListaPedidos pedidos;
+    private ListaRutas rutas;
     
     
-    public GrupoListas(ListaCliente clientes, ListaRestaurant restaurantes, ListaPedidos pedidos){
+    public GrupoListas(ListaCliente clientes, ListaRestaurant restaurantes, ListaPedidos pedidos, ListaRutas rutas){
         this.clientes = clientes;
         this.restaurantes = restaurantes;
         this.pedidos = pedidos;
+        this.rutas = rutas;
         
     }
 
@@ -49,6 +51,11 @@ public class GrupoListas {
     public void setPedidos(ListaPedidos pedidos) {
         this.pedidos = pedidos;
     }
+<<<<<<< HEAD
+=======
+<<<<<<< Updated upstream
+=======
+>>>>>>> Sebastian
 
     /**
      * @return the clientes
@@ -63,5 +70,23 @@ public class GrupoListas {
     public void setClientes(ListaCliente clientes) {
         this.clientes = clientes;
     }
+<<<<<<< HEAD
+=======
+
+    /**
+     * @return the rutas
+     */
+    public ListaRutas getRutas() {
+        return rutas;
+    }
+
+    /**
+     * @param rutas the rutas to set
+     */
+    public void setRutas(ListaRutas rutas) {
+        this.rutas = rutas;
+    }
+>>>>>>> Stashed changes
+>>>>>>> Sebastian
     
 }

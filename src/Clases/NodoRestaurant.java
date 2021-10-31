@@ -74,13 +74,6 @@ public class NodoRestaurant {
     /**
      * @param menu the menu to set
      */
-    public void setMenu(String[] menu) {
-        this.setMenu(menu);
-    }
-
-    /**
-     * @param menu the menu to set
-     */
     public void setMenu(ListaMenu menu) {
         this.menu = menu;
     }

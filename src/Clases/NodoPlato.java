@@ -11,7 +11,9 @@ package Clases;
  */
 public class NodoPlato {
     private NodoPlato siguiente;
+    private NodoPlato anterior;
     private String platillo;
+    private int identificador;
     
     public NodoPlato(String platillo){
         this.siguiente = null;
@@ -44,5 +46,33 @@ public class NodoPlato {
      */
     public void setPlatillo(String platillo) {
         this.platillo = platillo;
+    }
+
+    /**
+     * @return the anterior
+     */
+    public NodoPlato getAnterior() {
+        return anterior;
+    }
+
+    /**
+     * @param anterior the anterior to set
+     */
+    public void setAnterior(NodoPlato anterior) {
+        this.anterior = anterior;
+    }
+
+    /**
+     * @return the identificador
+     */
+    public int getIdentificador() {
+        return identificador;
+    }
+
+    /**
+     * @param identificador the identificador to set
+     */
+    public void setIdentificador(int identificador) {
+        this.identificador = identificador;
     }
 }
