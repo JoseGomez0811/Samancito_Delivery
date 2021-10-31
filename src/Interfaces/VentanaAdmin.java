@@ -8,7 +8,7 @@ package Interfaces;
 import Grafo.GrafMatPeso;
 import Grafo.Vertice;
 import Grafo.VerticeCliente;
-import Grafo.VerticeLocal;
+import Grafo.VerticeRestaurant;
 
 /**
  *
@@ -93,7 +93,7 @@ public class VentanaAdmin extends javax.swing.JFrame {
         GrafMatPeso grafo = new GrafMatPeso(40);
         Vertice verticeCliente = new VerticeCliente("Test Client");
         grafo.nuevoVertice(verticeCliente);
-        Vertice verticeLocal = new VerticeLocal("Test local");
+        Vertice verticeLocal = new VerticeRestaurant("Test local");
         grafo.nuevoVertice(verticeLocal);
         grafo.nuevoArco(verticeLocal, verticeCliente, 50);
         MapaGrafo mapaGrafo = MapaGrafoUtils.construirMapa(grafo);

@@ -5,32 +5,32 @@
  */
 package Grafo;
 
-import Clases.Local;
+import Clases.NodoRestaurant;
 import java.awt.Color;
 
 /**
  *
  * @author s_ant
  */
-public class VerticeLocal extends Vertice{
+public class VerticeRestaurant extends Vertice{
     
-    private Local local;
+    private NodoRestaurant restaurant;
     
-    public VerticeLocal(String nombre2) {
+    public VerticeRestaurant(String nombre2) {
         super(nombre2);
     }
 
-    public VerticeLocal(Local local) {
-        super(local.getNombre());
-        this.local = local;
+    public VerticeRestaurant(NodoRestaurant restaurant) {
+        super(restaurant.getNombre());
+        this.restaurant = restaurant;
     }
 
-    public Local getLocal() {
-        return local;
+    public NodoRestaurant restaurant() {
+        return restaurant;
     }
 
-    public void setLocal(Local local) {
-        this.local = local;
+    public void setLocal(NodoRestaurant restaurant) {
+        this.restaurant = restaurant;
     }
 
     public String getNombre() {
