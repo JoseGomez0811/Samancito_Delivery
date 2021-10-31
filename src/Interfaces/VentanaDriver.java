@@ -5,6 +5,19 @@
  */
 package Interfaces;
 
+import Clases.ManejoDeData;
+import Clases.GrupoListas;
+import Clases.ListaCliente;
+import Clases.ListaMenu;
+import Clases.NodoCliente;
+import Clases.ListaPedidos;
+import Clases.ListaRestaurant;
+import Clases.ListaRutas;
+import Clases.NodoPedido;
+import Clases.NodoPlato;
+import Clases.NodoRestaurant;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Jose
@@ -14,6 +27,14 @@ public class VentanaDriver extends javax.swing.JFrame {
     /**
      * Creates new form VentanaDriver
      */
+    
+    ManejoDeData objeto = new ManejoDeData();
+    GrupoListas grupo_listas = objeto.leer_txt();
+    ListaPedidos pedidos = grupo_listas.getPedidos();
+    ListaRestaurant restaurantes = grupo_listas.getRestaurantes();
+    ListaCliente clientes = grupo_listas.getClientes();
+    ListaRutas rutas = grupo_listas.getRutas();
+    
     public VentanaDriver() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -30,15 +51,20 @@ public class VentanaDriver extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        campoPedido = new javax.swing.JTextField();
+        campoCliente = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        BotonPedidos = new javax.swing.JButton();
+        campoRestaurante = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        campoOrden = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("DRIVER");
 
-        jLabel2.setText("Pedido:");
+        jLabel2.setText("Orden");
 
         jButton1.setText("Calcular");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -47,7 +73,24 @@ public class VentanaDriver extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Pedidos");
+        BotonPedidos.setText("Pedidos");
+        BotonPedidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonPedidosActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Ingrese los datos del pedido que va a tomar ");
+
+        campoOrden.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoOrdenActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Id del cliente");
+
+        jLabel5.setText("Restaurante");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -56,35 +99,55 @@ public class VentanaDriver extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(88, 88, 88)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(50, 50, 50)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton2)
-                                .addGap(19, 19, 19)
+                                .addComponent(BotonPedidos)
+                                .addGap(18, 18, 18)
                                 .addComponent(jButton1))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel2))
                                 .addGap(18, 18, 18)
-                                .addComponent(campoPedido)))))
-                .addContainerGap(50, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(campoOrden)
+                                    .addComponent(campoRestaurante)
+                                    .addComponent(campoCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)))
+                            .addComponent(jLabel5)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(128, 128, 128)
+                        .addComponent(jLabel1)))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addGap(10, 10, 10)
                 .addComponent(jLabel1)
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(campoPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap(30, Short.MAX_VALUE))
+                    .addComponent(campoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(campoRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(campoOrden, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(BotonPedidos)
+                            .addComponent(jButton1)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         pack();
@@ -92,8 +155,28 @@ public class VentanaDriver extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Object pedido = campoPedido.getText();
+        try{
+            String cliente = campoCliente.getText();
+            String restaurante = campoRestaurante.getText();
+            String orden = campoOrden.getText();            
+            NodoPedido pedido_eliminar = pedidos.buscarPedido(cliente, restaurante, orden);
+            pedidos.eliminarPedido(pedido_eliminar);
+            objeto.guardar_txt(restaurantes, clientes, pedidos, rutas);
+            JOptionPane.showMessageDialog(null,"Pedido tomado");
+        }catch(Exception err){
+            JOptionPane.showMessageDialog(null,"Ingrese correctamente los datos del pedido");
+        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void BotonPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonPedidosActionPerformed
+        // TODO add your handling code here:
+        pedidos.imprimir();
+    }//GEN-LAST:event_BotonPedidosActionPerformed
+
+    private void campoOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoOrdenActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoOrdenActionPerformed
 
     /**
      * @param args the command line arguments
@@ -131,10 +214,15 @@ public class VentanaDriver extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField campoPedido;
+    private javax.swing.JButton BotonPedidos;
+    private javax.swing.JTextField campoCliente;
+    private javax.swing.JTextField campoOrden;
+    private javax.swing.JTextField campoRestaurante;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     // End of variables declaration//GEN-END:variables
 }

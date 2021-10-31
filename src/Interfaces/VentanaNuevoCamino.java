@@ -5,11 +5,27 @@
  */
 package Interfaces;
 
+import javax.swing.JOptionPane;
+import Clases.GrupoListas;
+import Clases.ManejoDeData;
+import Clases.ListaCliente;
+import Clases.ListaPedidos;
+import Clases.ListaRestaurant;
+import Clases.ListaRutas;
+import Clases.NodoRuta;
+
 /**
  *
  * @author Jose
  */
 public class VentanaNuevoCamino extends javax.swing.JFrame {
+    
+    ManejoDeData objeto = new ManejoDeData();
+    GrupoListas grupo_listas = objeto.leer_txt();
+    ListaPedidos pedidos = grupo_listas.getPedidos();
+    ListaRestaurant restaurantes = grupo_listas.getRestaurantes();
+    ListaCliente clientes = grupo_listas.getClientes();
+    ListaRutas rutas = grupo_listas.getRutas();
 
     /**
      * Creates new form VentanaNuevoCamino
@@ -106,10 +122,23 @@ public class VentanaNuevoCamino extends javax.swing.JFrame {
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
-        Object puntoA = campoA.getText();
-        Object puntoB = campoB.getText();
-        int distancia = Integer.parseInt(campoDistancia.getText());
         
+        try{
+            Object puntoA = campoA.getText();
+            Object puntoB = campoB.getText();
+            int distancia = Integer.parseInt(campoDistancia.getText());
+            String posicion1 = campoA.getText();
+            String posicion2 = campoB.getText();
+            String posicion3 = campoDistancia.getText();// Este solo lo utilizare para actualizar la lista. Sebastian
+            if(!posicion1.isBlank() && !posicion2.isBlank() && !posicion3.isBlank()){
+                System.out.println("entra");
+                NodoRuta nueva_ruta = new NodoRuta(posicion1,posicion2,posicion3);
+                rutas.agregar_al_final(nueva_ruta);
+                objeto.guardar_txt(restaurantes, clientes, pedidos, rutas);
+            }
+        }catch(Exception err){
+            JOptionPane.showMessageDialog(null,"No puede dejar campos vacios");
+        }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     /**

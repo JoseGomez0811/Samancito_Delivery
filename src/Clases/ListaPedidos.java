@@ -41,20 +41,20 @@ public class ListaPedidos {
             JOptionPane.showMessageDialog(null, "La lista esta vacia.");
         }else{
             NodoPedido temporal;
-            temporal = getPrimero();
+             temporal = getPrimero();
             String mostrar_completo = "";
             for (int i = 0; i < getTamaño(); i ++){
-                mostrar_completo += "Nombre: " + temporal.getCliente() + "," + temporal.getRestaurant() + "," + temporal.getOrden() + "\n";
+                mostrar_completo += temporal.getCliente() + "," + temporal.getRestaurant() + "," + temporal.getOrden() + "\n";
                 temporal = temporal.getSiguiente();
             }
-            System.out.println(mostrar_completo);
+            JOptionPane.showMessageDialog(null,mostrar_completo);
         }
     }
     
     public NodoPedido buscarPedido(String cliente, String restaurant, String orden){
         NodoPedido pedido = primero;
         while(pedido != null){
-            if(pedido.getCliente() == cliente && pedido.getRestaurant() == restaurant && pedido.getOrden() == orden){
+            if(pedido.getCliente().equals(cliente) && pedido.getRestaurant().equals(restaurant) && pedido.getOrden().equals(orden)){
                 return pedido;
             }
             pedido = pedido.getSiguiente();

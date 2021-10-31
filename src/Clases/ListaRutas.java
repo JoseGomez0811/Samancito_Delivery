@@ -11,12 +11,12 @@ import javax.swing.JOptionPane;
  *
  * @author SebasBD
  */
-public class ListaCliente {
-    private NodoCliente primero;
-    private NodoCliente ultimo;
+public class ListaRutas {
+    private NodoRuta primero;
+    private NodoRuta ultimo;
     private int tamaño;
     
-    public ListaCliente(){
+    public ListaRutas(){
         this.primero = null;
         this.ultimo = null;
         this.tamaño = 0;
@@ -26,23 +26,23 @@ public class ListaCliente {
         return getPrimero() == null;
     }
     
-    public void agregar_al_inicio(NodoCliente cliente){
+    public void agregar_al_inicio(NodoRuta ruta){
         if(esta_vacia()){
-            setPrimero(cliente);
-            setUltimo(cliente);
+            setPrimero(ruta);
+            setUltimo(ruta);
         }else{
-            cliente.setSiguiente(getPrimero());
-            setPrimero(cliente);
+            ruta.setSiguiente(getPrimero());
+            setPrimero(ruta);
         }
         setTamaño(getTamaño() + 1);
     }
     
-    public void agregar_al_final(NodoCliente cliente){
+    public void agregar_al_final(NodoRuta ruta){
         if(esta_vacia()){
-            agregar_al_inicio(cliente);
+            agregar_al_inicio(ruta);
         }else{
-            getUltimo().setSiguiente(cliente);
-            setUltimo(cliente);
+            getUltimo().setSiguiente(ruta);
+            setUltimo(ruta);
             setTamaño(getTamaño() + 1);
         }
     }
@@ -51,11 +51,11 @@ public class ListaCliente {
         if(esta_vacia()){
             JOptionPane.showMessageDialog(null, "La lista esta vacia.");
         }else{
-            NodoCliente temporal;
+            NodoRuta temporal;
             temporal = getPrimero();
             String mostrar_completo = "";
             for (int i = 0; i < getTamaño(); i ++){
-                mostrar_completo += temporal.getNombre() + "," + temporal.getApellido() + "," + temporal.getCedula() + "\n";
+                mostrar_completo += temporal.getPosicion1() + "," + temporal.getPosicion2() + "," + temporal.getPosicion3() + "\n";
                 temporal = temporal.getSiguiente();
             }
             JOptionPane.showMessageDialog(null,mostrar_completo);
@@ -65,28 +65,28 @@ public class ListaCliente {
     /**
      * @return the primero
      */
-    public NodoCliente getPrimero() {
+    public NodoRuta getPrimero() {
         return primero;
     }
 
     /**
      * @param primero the primero to set
      */
-    public void setPrimero(NodoCliente primero) {
+    public void setPrimero(NodoRuta primero) {
         this.primero = primero;
     }
 
     /**
      * @return the ultimo
      */
-    public NodoCliente getUltimo() {
+    public NodoRuta getUltimo() {
         return ultimo;
     }
 
     /**
      * @param ultimo the ultimo to set
      */
-    public void setUltimo(NodoCliente ultimo) {
+    public void setUltimo(NodoRuta ultimo) {
         this.ultimo = ultimo;
     }
 
