@@ -5,7 +5,7 @@
  */
 package Grafo;
 
-import Clases.Cliente;
+import Clases.NodoCliente;
 import java.awt.Color;
 
 /**
@@ -14,22 +14,22 @@ import java.awt.Color;
  */
 public class VerticeCliente extends Vertice{   
     
-    private Cliente cliente;
+    private NodoCliente cliente;
     
     public VerticeCliente(String nombre2) {
         super(nombre2);
     }
 
-    public VerticeCliente(Cliente cliente) {
+    public VerticeCliente(NodoCliente cliente) {
         super(cliente.getNombre());
         this.cliente = cliente;
     }
 
-    public Cliente getCliente() {
+    public NodoCliente getCliente() {
         return cliente;
     }
 
-    public void setCliente(Cliente cliente) {
+    public void setCliente(NodoCliente cliente) {
         this.cliente = cliente;
     }
 
