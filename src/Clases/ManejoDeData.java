@@ -105,7 +105,7 @@ public class ManejoDeData {
                     br.close();
                     }
                 }
-                JOptionPane.showMessageDialog(null,"Lectura exitosa");
+                //JOptionPane.showMessageDialog(null,"Lectura exitosa");
             }catch(Exception er){
                 JOptionPane.showMessageDialog(null,"Ocurrio un problema al leer el archivo");
             }

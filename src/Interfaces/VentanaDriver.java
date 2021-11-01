@@ -169,7 +169,7 @@ public class VentanaDriver extends javax.swing.JFrame implements ListSelectionLi
             String restaurante = campoRestaurante.getText();
             String orden = campoOrden.getText();            
             NodoPedido pedido = pedidos.buscarPedido(cliente, restaurante, orden);
-//            pedidos.eliminarPedido(pedido);
+            //pedidos.eliminarPedido(pedido);
             JOptionPane.showMessageDialog(this, "Pedido tomado. Haga click en Ok para mostrar la Ruta");
             // Obtenemos el grafo de la aplicación global
             GrafMatPeso grafo = Aplicacion.getGrafo();

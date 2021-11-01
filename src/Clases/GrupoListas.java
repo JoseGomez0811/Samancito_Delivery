@@ -22,7 +22,7 @@ public class GrupoListas {
      * @param pedidos El parámetro pedidos define el listado de pedidos
      * @param rutas El parámetro rutas define el listado de rutas
      */
-
+    
     public GrupoListas(ListaCliente clientes, ListaRestaurant restaurantes, ListaPedidos pedidos, ListaRutas rutas){
         this.clientes = clientes;
         this.restaurantes = restaurantes;

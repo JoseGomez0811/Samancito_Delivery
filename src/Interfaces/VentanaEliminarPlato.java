@@ -34,6 +34,7 @@ public class VentanaEliminarPlato extends javax.swing.JFrame {
     
     public VentanaEliminarPlato() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

@@ -34,7 +34,7 @@ public class ListaPedidos {
     
     /**
      * Método que agrega un nuevo elemento al final de la lista
-     * @param pedido El parámetro pedido define...
+     * @param pedido El parámetro pedido define el elemento que desea agregar el usuario
      */
     public void agregar_al_final(NodoPedido pedido){
         if(this.esta_vacia()){
@@ -70,7 +70,7 @@ public class ListaPedidos {
      * @param cliente el parámetro cliente define el nombre del cliente que realizó el pedido
      * @param restaurant El parámetro restaurante defina el restaurante al cual el cliente le hizo el pedido
      * @param orden El parámetro orden define el plato escogido por el cliente
-     * @return 
+     * @return Retorna null si no encuentra el pedido
      */
     public NodoPedido buscarPedido(String cliente, String restaurant, String orden){
         NodoPedido pedido = primero;

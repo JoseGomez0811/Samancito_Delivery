@@ -32,6 +32,7 @@ public class VentanaAgregarRestaurante extends javax.swing.JFrame {
      */
     public VentanaAgregarRestaurante() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -59,7 +60,7 @@ public class VentanaAgregarRestaurante extends javax.swing.JFrame {
         distanciaVertice = new javax.swing.JSpinner();
         distanciaVertice1 = new javax.swing.JSpinner();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("AGREGAR RESTAURANT");
 
