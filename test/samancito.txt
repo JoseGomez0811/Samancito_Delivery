@@ -14,6 +14,7 @@ Clientes
 6,Eduardo,Petardo,4326534
 7,Enrique,Manrique,434543
 8,Jose,Gomez,1234568
+9,jose,herrera,87654321
 Pedidos
 6,E,5-Holy Tempeh/1-Holy Chicken Tenders
 1,C,9-Banquito Burger/6-Aros de Cebolla

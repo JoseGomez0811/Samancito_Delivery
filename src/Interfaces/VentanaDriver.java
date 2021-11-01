@@ -169,21 +169,27 @@ public class VentanaDriver extends javax.swing.JFrame implements ListSelectionLi
             String restaurante = campoRestaurante.getText();
             String orden = campoOrden.getText();            
             NodoPedido pedido = pedidos.buscarPedido(cliente, restaurante, orden);
+
             //pedidos.eliminarPedido(pedido);
+
             JOptionPane.showMessageDialog(this, "Pedido tomado. Haga click en Ok para mostrar la Ruta");
             // Obtenemos el grafo de la aplicación global
             GrafMatPeso grafo = Aplicacion.getGrafo();
+            try{
+                // Construimos la ventana del mapa del grafo
+                MapaGrafo mapaGrafo = MapaGrafoUtils.construirMapa(grafo);
+                // Obtenemos los vertices del grafo
+                Vertice[] vertices = grafo.vertices();
+                // el origen siempre es el restaurante
+                Vertice origen = vertices[grafo.numVertice(new Vertice(restaurante))];
+                Vertice destino = vertices[grafo.numVertice(new Vertice(cliente))];
+                mapaGrafo.aplicarRuta(origen, destino);
+                mapaGrafo.setVisible(true);
+                dispose(); 
+            }catch(RuntimeException ex){
+                System.out.println(ex.getMessage());
+            }
             
-            // Construimos la ventana del mapa del grafo
-            MapaGrafo mapaGrafo = MapaGrafoUtils.construirMapa(grafo);
-            // Obtenemos los vertices del grafo
-            Vertice[] vertices = grafo.vertices();
-            // el origen siempre es el restaurante
-            Vertice origen = vertices[grafo.numVertice(new Vertice(restaurante))];
-            Vertice destino = vertices[grafo.numVertice(new Vertice(cliente))];
-            mapaGrafo.aplicarRuta(origen, destino);
-            mapaGrafo.setVisible(true);
-            dispose();
     }//GEN-LAST:event_tomarPedidoButtonActionPerformed
 
     /**
