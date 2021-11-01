@@ -69,6 +69,11 @@ public class Aplicacion {
         
     }
     
+    /**
+     * Método que agrega un restaurante tanto al grafo como a la lista de restaurantes
+     * @param nodoRestaurant El parámetro nodoRestaurant define el elemento que se desea agregar
+     * @return Reotrna el vertice del restaurante agregado
+     */
     public static Vertice agregarVerticeRestaurant(NodoRestaurant nodoRestaurant) {
         Vertice verticeRestaurant = new VerticeRestaurant(nodoRestaurant);
         grafo.nuevoVertice(verticeRestaurant);
@@ -76,6 +81,13 @@ public class Aplicacion {
         return verticeRestaurant;
     }
     
+    /**
+     * Método que agrega una ruta al grafo y a la lista de rutas
+     * @param a El parámetro a define el punto de partida del grafo
+     * @param b El parámero b define el punto de llegada del grafo
+     * @param distancia El parámetro distancia define la distancia entre los puntos a y b
+     * @return Retorna la ruta agregada
+     */
     public static NodoRuta agregarRuta(Vertice a, Vertice b, int distancia) {
         NodoRuta nodoRuta = new NodoRuta(a.getEtiqueta(), b.getEtiqueta(), String.valueOf(distancia));
         grafo.nuevoArco(a, b, distancia);

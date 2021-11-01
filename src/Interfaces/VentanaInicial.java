@@ -92,7 +92,6 @@ public class VentanaInicial extends javax.swing.JFrame {
 
     private void btnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteActionPerformed
         // TODO add your handling code here:
-        
         VentanaCliente vencliente = new VentanaCliente();
         vencliente.setVisible(true);
     }//GEN-LAST:event_btnClienteActionPerformed

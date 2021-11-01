@@ -35,7 +35,7 @@ public class ListaCliente {
     
     /**
      * Método que agregar un nuevo elemento al principio de la lista
-     * @param cliente El parámetro cliente define...
+     * @param cliente El parámetro cliente define el elemento que desea agregar el usuario
      */
     public void agregar_al_inicio(NodoCliente cliente){
         if(esta_vacia()){
@@ -50,7 +50,7 @@ public class ListaCliente {
     
     /**
      * Método que agrega un nuevo elemento el final de la lista
-     * @param cliente El parámetro cliente define...
+     * @param cliente El parámetro cliente define el elemento que desea agregar el usuario
      */
     public void agregar_al_final(NodoCliente cliente){
         if(esta_vacia()){

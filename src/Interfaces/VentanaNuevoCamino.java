@@ -32,6 +32,7 @@ public class VentanaNuevoCamino extends javax.swing.JFrame {
      */
     public VentanaNuevoCamino() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -52,7 +53,7 @@ public class VentanaNuevoCamino extends javax.swing.JFrame {
         campoB = new javax.swing.JTextField();
         campoDistancia = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Samancito Delivey");
 
         jLabel1.setText("AGREGAR NUEVO CAMINO");

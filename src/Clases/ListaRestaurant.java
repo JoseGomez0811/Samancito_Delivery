@@ -35,7 +35,7 @@ public class ListaRestaurant {
     
     /**
      * Método que agrega un nuevo elemento al principio de la lista
-     * @param restaurant El parámetro restaurante define...
+     * @param restaurant El parámetro restaurante define el elemento que desea agregar el usuario
      */
     public void agregar_al_inicio(NodoRestaurant restaurant){
         if(esta_vacia()){
@@ -50,7 +50,7 @@ public class ListaRestaurant {
     
     /**
      * Método que agrega un nuevo elemento al final de la lista
-     * @param restaurant El parámetro restaurante define...
+     * @param restaurant El parámetro restaurante define el elemento que desea agregar el usuario
      */
     public void agregar_al_final(NodoRestaurant restaurant){
         if(esta_vacia()){

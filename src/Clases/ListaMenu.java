@@ -44,7 +44,7 @@ public class ListaMenu {
     
     /**
      * Método que agregar un nuevo elemento al final de la lista
-     * @param plato El parámetro plato define... 
+     * @param plato El parámetro plato define el elemento que desea agregar el usuario
      */
     public void agregar_al_final(NodoPlato plato){
         if(this.esta_vacia()){

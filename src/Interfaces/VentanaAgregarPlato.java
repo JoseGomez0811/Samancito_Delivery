@@ -32,6 +32,7 @@ public class VentanaAgregarPlato extends javax.swing.JFrame {
     
     public VentanaAgregarPlato() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

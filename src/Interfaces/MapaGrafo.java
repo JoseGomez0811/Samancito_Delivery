@@ -24,6 +24,7 @@ public class MapaGrafo extends javax.swing.JFrame {
         this.vertices.addAll(vertices);
         this.aristas.addAll(aristas);
         initComponents();
+        this.setLocationRelativeTo(null);
     }
     
     // constructor usado para probar

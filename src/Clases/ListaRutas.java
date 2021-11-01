@@ -26,6 +26,10 @@ public class ListaRutas {
         return getPrimero() == null;
     }
     
+    /**
+     * Método que agrega un nuevo elemento al principio de la lista
+     * @param restaurant El parámetro restaurante define el elemento que desea agregar el usuario
+     */
     public void agregar_al_inicio(NodoRuta ruta){
         if(esta_vacia()){
             setPrimero(ruta);
@@ -37,6 +41,10 @@ public class ListaRutas {
         setTamano(getTamano() + 1);
     }
     
+    /**
+     * Método que agrega un nuevo elemento al final de la lista
+     * @param restaurant El parámetro restaurante define el elemento que desea agregar el usuario
+     */
     public void agregar_al_final(NodoRuta ruta){
         if(esta_vacia()){
             agregar_al_inicio(ruta);
@@ -47,6 +55,9 @@ public class ListaRutas {
         }
     }
     
+    /**
+     *Método que imprime la lista creada
+     */
     public void imprimir(){
         if(esta_vacia()){
             JOptionPane.showMessageDialog(null, "La lista esta vacia.");

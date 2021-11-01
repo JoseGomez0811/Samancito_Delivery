@@ -46,6 +46,11 @@ public class VentanaAdmin extends javax.swing.JFrame {
         jLabel1.setText("VENTANA ADMINISTRADOR");
 
         jButton1.setText("Agregar Nuevo Camino");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         agregarPlatosButton.setText("Agregar Platos");
         agregarPlatosButton.addActionListener(new java.awt.event.ActionListener() {
@@ -115,6 +120,12 @@ public class VentanaAdmin extends javax.swing.JFrame {
         VentanaEliminarPlato ventanaEliminarPlato = new VentanaEliminarPlato();
         ventanaEliminarPlato.setVisible(true);
     }//GEN-LAST:event_eliminarPlatoButtonActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        VentanaNuevoCamino venNuevoCamino = new VentanaNuevoCamino();
+        venNuevoCamino.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

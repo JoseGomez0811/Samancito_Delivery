@@ -11,9 +11,18 @@ package Clases;
  */
 public class Funciones {
     
+    /**
+     * Constructor de la clase Funciones
+     */
     public Funciones(){
     
     }
+    
+    /**
+     * Método que comprueba que solo hayan letras en una cadena
+     * @param cadena El parámetro cadena define una cadena ingresada por el usuario
+     * @return Retorna true si la cadena solo contiene letras
+     */
     public boolean esSoloLetras(String cadena){
         for (int i = 0; i < cadena.length(); i++){
             char caracter = cadena.toUpperCase().charAt(i);
