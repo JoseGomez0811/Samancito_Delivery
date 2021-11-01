@@ -5,6 +5,7 @@
  */
 package Interfaces;
 
+import Clases.Aplicacion;
 import Clases.ManejoDeData;
 import Clases.GrupoListas;
 import Clases.ListaCliente;
@@ -16,20 +17,26 @@ import Clases.ListaRutas;
 import Clases.NodoPedido;
 import Clases.NodoPlato;
 import Clases.NodoRestaurant;
+import Grafo.CaminoMinimo;
+import Grafo.GrafMatPeso;
+import Grafo.Vertice;
 import javax.swing.JOptionPane;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.TableModel;
 
 /**
  *
  * @author Jose
  */
-public class VentanaDriver extends javax.swing.JFrame {
+public class VentanaDriver extends javax.swing.JFrame implements ListSelectionListener {
 
     /**
      * Creates new form VentanaDriver
      */
     
-    ManejoDeData objeto = new ManejoDeData();
-    GrupoListas grupo_listas = objeto.leer_txt();
+//    ManejoDeData objeto = new ManejoDeData();
+    GrupoListas grupo_listas = Aplicacion.getGrupoListas();
     ListaPedidos pedidos = grupo_listas.getPedidos();
     ListaRestaurant restaurantes = grupo_listas.getRestaurantes();
     ListaCliente clientes = grupo_listas.getClientes();
@@ -50,47 +57,48 @@ public class VentanaDriver extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        campoCliente = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        BotonPedidos = new javax.swing.JButton();
-        campoRestaurante = new javax.swing.JTextField();
+        tomarPedidoButton = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        campoOrden = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablaPedidos = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        campoRestaurante = new javax.swing.JTextField();
+        campoCliente = new javax.swing.JTextField();
+        campoOrden = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("DRIVER");
 
-        jLabel2.setText("Orden");
-
-        jButton1.setText("Calcular");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        tomarPedidoButton.setText("Tomar pedido");
+        tomarPedidoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                tomarPedidoButtonActionPerformed(evt);
             }
         });
 
-        BotonPedidos.setText("Pedidos");
-        BotonPedidos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonPedidosActionPerformed(evt);
-            }
-        });
+        jLabel3.setText("Seleccione un pedido a tomar");
 
-        jLabel3.setText("Ingrese los datos del pedido que va a tomar ");
+        tablaPedidos.setModel(new javax.swing.table.DefaultTableModel(getPedidosModel(), new String[] {"Restaurante", "Cliente", "Pedido"})
+        );
+        tablaPedidos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tablaPedidos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tablaPedidos.getSelectionModel().addListSelectionListener(this);
+        jScrollPane1.setViewportView(tablaPedidos);
 
-        campoOrden.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoOrdenActionPerformed(evt);
-            }
-        });
+        jLabel2.setText("Restaurante");
 
-        jLabel4.setText("Id del cliente");
+        jLabel4.setText("Pedido");
 
-        jLabel5.setText("Restaurante");
+        jLabel5.setText("Cliente");
+
+        campoRestaurante.setEditable(false);
+
+        campoCliente.setEditable(false);
+
+        campoOrden.setEditable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -99,27 +107,32 @@ public class VentanaDriver extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(128, 128, 128)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(50, 50, 50)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(BotonPedidos)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton1))
+                                .addGap(40, 40, 40)
+                                .addComponent(jLabel3))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel2))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(campoOrden)
-                                    .addComponent(campoRestaurante)
-                                    .addComponent(campoCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)))
-                            .addComponent(jLabel5)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(128, 128, 128)
-                        .addComponent(jLabel1)))
-                .addContainerGap(39, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING))
+                                        .addGap(36, 36, 36)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(campoOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(campoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(campoRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tomarPedidoButton)))))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,56 +140,51 @@ public class VentanaDriver extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel3)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(campoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(campoRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(32, 32, 32)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(campoOrden, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(BotonPedidos)
-                            .addComponent(jButton1)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                            .addComponent(jLabel2)
+                            .addComponent(campoRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(campoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tomarPedidoButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(campoOrden, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        try{
+    private void tomarPedidoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tomarPedidoButtonActionPerformed
             String cliente = campoCliente.getText();
             String restaurante = campoRestaurante.getText();
             String orden = campoOrden.getText();            
-            NodoPedido pedido_eliminar = pedidos.buscarPedido(cliente, restaurante, orden);
-            pedidos.eliminarPedido(pedido_eliminar);
-            objeto.guardar_txt(restaurantes, clientes, pedidos, rutas);
-            JOptionPane.showMessageDialog(null,"Pedido tomado");
-        }catch(Exception err){
-            JOptionPane.showMessageDialog(null,"Ingrese correctamente los datos del pedido");
-        }
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void BotonPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonPedidosActionPerformed
-        // TODO add your handling code here:
-        pedidos.imprimir();
-    }//GEN-LAST:event_BotonPedidosActionPerformed
-
-    private void campoOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoOrdenActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campoOrdenActionPerformed
+            NodoPedido pedido = pedidos.buscarPedido(cliente, restaurante, orden);
+//            pedidos.eliminarPedido(pedido);
+            JOptionPane.showMessageDialog(this, "Pedido tomado. Haga click en Ok para mostrar la Ruta");
+            // Obtenemos el grafo de la aplicación global
+            GrafMatPeso grafo = Aplicacion.getGrafo();
+            
+            // Construimos la ventana del mapa del grafo
+            MapaGrafo mapaGrafo = MapaGrafoUtils.construirMapa(grafo);
+            // Obtenemos los vertices del grafo
+            Vertice[] vertices = grafo.vertices();
+            // el origen siempre es el restaurante
+            Vertice origen = vertices[grafo.numVertice(new Vertice(restaurante))];
+            Vertice destino = vertices[grafo.numVertice(new Vertice(cliente))];
+            mapaGrafo.aplicarRuta(origen, destino);
+            mapaGrafo.setVisible(true);
+            dispose();
+    }//GEN-LAST:event_tomarPedidoButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -214,15 +222,48 @@ public class VentanaDriver extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BotonPedidos;
     private javax.swing.JTextField campoCliente;
     private javax.swing.JTextField campoOrden;
     private javax.swing.JTextField campoRestaurante;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tablaPedidos;
+    private javax.swing.JButton tomarPedidoButton;
     // End of variables declaration//GEN-END:variables
+
+    private Object[][] getPedidosModel() {
+        Object[][] model = new Object[pedidos.getTamano()][4];
+        if (!pedidos.esta_vacia()) {
+            NodoPedido pedido = pedidos.getPrimero();
+            for (int i = 0; pedido != null; i++, pedido = pedido.getSiguiente()) {
+                NodoRestaurant restaurant = restaurantes.buscarRestaurant(pedido.getRestaurant());
+                NodoCliente cliente = clientes.buscarCliente(Integer.parseInt(pedido.getCliente()));
+                model[i] = new Object[] {
+                    restaurant,
+                    cliente,
+                    pedido.getOrden()
+                };
+            }
+        }
+        
+        return model;
+    }
+
+    @Override
+    public void valueChanged(ListSelectionEvent e) {
+        if (!e.getValueIsAdjusting() && tablaPedidos.getSelectedRow() != -1) {
+            int fila = tablaPedidos.getSelectedRow();
+            TableModel modelo = tablaPedidos.getModel();
+            NodoRestaurant restaurant = (NodoRestaurant) modelo.getValueAt(fila, 0);
+            NodoCliente cliente = (NodoCliente) modelo.getValueAt(fila, 1);
+            String pedido = (String) modelo.getValueAt(fila, 2);
+            campoRestaurante.setText(restaurant.getLetra());
+            campoCliente.setText(String.valueOf(cliente.getIdentificador()));
+            campoOrden.setText(pedido);
+        }
+    }
 }

@@ -85,6 +85,9 @@ public class NodoRestaurant {
     public void setMenu(ListaMenu menu) {
         this.menu = menu;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return nombre;
+    }
 }

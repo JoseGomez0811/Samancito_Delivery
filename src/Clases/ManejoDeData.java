@@ -74,12 +74,10 @@ public class ManejoDeData {
                             i++;
                             while(!txt_split[i].contains("Pedidos")){
                                 String [] clientes_split = txt_split[i].split(",");
-                                for(int j = 0; j < clientes_split.length; j++){
-                                    int identificador = Integer.parseInt(clientes_split[0]);
-                                    int cedula = Integer.parseInt(clientes_split[3]);
-                                    NodoCliente cliente = new NodoCliente(identificador,clientes_split[1],clientes_split[2],cedula);  
-                                    clientes.agregar_al_final(cliente);
-                                }
+                                int identificador = Integer.parseInt(clientes_split[0]);
+                                int cedula = Integer.parseInt(clientes_split[3]);
+                                NodoCliente cliente = new NodoCliente(identificador,clientes_split[1],clientes_split[2],cedula);  
+                                clientes.agregar_al_final(cliente);
                                 i++;
                             }
                         }
@@ -121,14 +119,14 @@ public class ManejoDeData {
         String restaurantes_actuales = "";
         if (!restaurantes.esta_vacia()) {
             NodoRestaurant temp = restaurantes.getPrimero();
-            for(int i = 0; i < restaurantes.getTamaño(); i++){
+            for(int i = 0; i < restaurantes.getTamano(); i++){
                 ListaMenu platillos = temp.getMenu();
                 NodoPlato plato = platillos.getPrimero();
                 String menu = "";  
-                for (int j = 0; j < platillos.getTamaño(); j++){
-                menu += plato.getPlatillo() + "/";
-                plato = plato.getSiguiente();
-            }
+                for (int j = 0; j < platillos.getTamano(); j++){
+                    menu += plato.getPlatillo() + "/";
+                    plato = plato.getSiguiente();
+                }
                 restaurantes_actuales += temp.getLetra() + "," + temp.getNombre() + "," + menu + "\n";
                 temp = temp.getSiguiente();
             }        
@@ -136,7 +134,7 @@ public class ManejoDeData {
         String clientes_actuales = "";
         if (!clientes.esta_vacia()) {
             NodoCliente temp = clientes.getPrimero();
-            for(int i = 0; i < clientes.getTamaño(); i++){
+            for(int i = 0; i < clientes.getTamano(); i++){
                 clientes_actuales += temp.getIdentificador() + "," + temp.getNombre() + "," + temp.getApellido() + "," + temp.getCedula() + "\n";
                 temp = temp.getSiguiente();
             }
@@ -144,7 +142,7 @@ public class ManejoDeData {
         String pedidos_actuales = "";
         if (!pedidos.esta_vacia()) {
             NodoPedido temp = pedidos.getPrimero();
-            for(int i = 0; i < pedidos.getTamaño(); i++){
+            for(int i = 0; i < pedidos.getTamano(); i++){
                 pedidos_actuales += temp.getCliente() + "," + temp.getRestaurant() + "," + temp.getOrden() + "\n";
                 temp = temp.getSiguiente();
             }
@@ -152,8 +150,8 @@ public class ManejoDeData {
         String rutas_actuales = "";
         if (!rutas.esta_vacia()) {
             NodoRuta temp = rutas.getPrimero();
-            for(int i = 0; i < rutas.getTamaño(); i++){
-                rutas_actuales += temp.getPosicion1() + "," + temp.getPosicion2() + "," + temp.getPosicion3() + "\n";
+            for(int i = 0; i < rutas.getTamano(); i++){
+                rutas_actuales += temp.getOrigen() + "," + temp.getDestino() + "," + temp.getDistancia() + "\n";
                 temp = temp.getSiguiente();
             }
         }

@@ -5,6 +5,10 @@
  */
 package Interfaces;
 
+import Clases.Aplicacion;
+import Grafo.CaminoMinimo;
+import Grafo.GrafMatPeso;
+import Grafo.Vertice;
 import Grafo.VerticeCliente;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -22,7 +26,7 @@ public class MapaGrafo extends javax.swing.JFrame {
         initComponents();
     }
     
-    // constructor usado para robar
+    // constructor usado para probar
     public MapaGrafo() {
         VerticeGrafico vertice1 = new VerticeGrafico(200, 50, new VerticeCliente("Test"), Color.YELLOW);
         VerticeGrafico vertice2 = new VerticeGrafico(300, 150, new VerticeCliente("Test2"), Color.CYAN);
@@ -98,4 +102,35 @@ public class MapaGrafo extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel panelMapa;
     // End of variables declaration//GEN-END:variables
+
+    void aplicarRuta(Vertice origen, Vertice destino) {
+        VerticeGrafico nodoOrigen = null;
+        VerticeGrafico nodoDestino = null;
+        for (VerticeGrafico vg: vertices) {
+            if (vg.getVertice().equals(origen)) {
+                nodoOrigen = vg;
+            }
+            
+            if (vg.getVertice().equals(destino)) {
+                nodoDestino = vg;
+            }
+        }
+        
+        if (nodoOrigen != null) {
+            nodoOrigen.setMarcado(true);
+            nodoOrigen.setColorBorde(new Color(254, 160, 74));
+        }
+        
+        if (nodoDestino != null) {
+            nodoDestino.setMarcado(true);
+            nodoDestino.setColorBorde(new Color(255, 131, 186));
+        }
+        
+        // Tratamiento de las aristas
+        GrafMatPeso grafo = Aplicacion.getGrafo();
+        CaminoMinimo caminoMinimo = new CaminoMinimo(grafo, grafo.numVertice(origen));
+        caminoMinimo.caminoMinimos();
+        caminoMinimo.recuperaCamino(grafo.numVertice(destino));
+        
+    }
 }

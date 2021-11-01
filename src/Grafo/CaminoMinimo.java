@@ -5,6 +5,8 @@
  */
 package Grafo;
 
+import java.util.Arrays;
+
 /**
  *
  * @author Jose
@@ -71,5 +73,40 @@ public class CaminoMinimo {
             }
         }
         return v;
+    }
+    
+//    public int[] recuperaCamino(int v) {
+//        int anterior = ultimo[v];
+//        if (v != s) {
+//            int[] pasos = recuperaCamino(anterior); // vuelve al último del último
+//            int i = 0;
+//            for(; i < pasos.length;) {
+//                if (pasos[i++] == -1) break;
+//            }
+//            pasos[i] = v;
+//            System.out.print(" -> V" + v);
+//            return pasos;
+//        }
+//        else {
+//            System.out.print("V" + s);
+//            int[] pasos = new int[n];
+//            Arrays.fill(pasos, -1);
+//            pasos[0] = s;
+//            return pasos;
+//        }
+//    }
+    public void recuperaCamino(int v)
+    {
+        int anterior = ultimo[v];
+        if (v != s)
+        {
+            recuperaCamino(anterior); // vuelve al último del último
+
+            System.out.print(" -> V" + v);
+        }
+        else {
+            
+            System.out.print("V" + s);
+        }
     }
 }

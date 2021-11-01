@@ -12,16 +12,16 @@ import java.awt.Color;
  *
  * @author s_ant
  */
-public class VerticeRestaurant extends Vertice{
+public class VerticeRestaurant extends Vertice {
     
     private NodoRestaurant restaurant;
     
-    public VerticeRestaurant(String nombre2) {
-        super(nombre2);
+    public VerticeRestaurant(String etiqueta) {
+        super(etiqueta);
     }
 
     public VerticeRestaurant(NodoRestaurant restaurant) {
-        super(restaurant.getNombre());
+        super(restaurant.getLetra(), restaurant.getNombre());
         this.restaurant = restaurant;
     }
 
@@ -29,31 +29,16 @@ public class VerticeRestaurant extends Vertice{
         return restaurant;
     }
 
-    public void setLocal(NodoRestaurant restaurant) {
+    public void setRestaurante(NodoRestaurant restaurant) {
         this.restaurant = restaurant;
     }
 
-    public String getNombre() {
-        return nombre;
+    public NodoRestaurant getRestaurant() {
+        return restaurant;
     }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public int getNumeroVertices() {
-        return numeroVertices;
-    }
-
-    public void setNumeroVertices(int numeroVertices) {
-        this.numeroVertices = numeroVertices;
-    }
-
+    
     @Override
     public Color getColorPreferencia() {
         return new Color(143, 220, 180);
     }
-    
-    
-    
 }

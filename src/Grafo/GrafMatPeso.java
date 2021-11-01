@@ -5,15 +5,59 @@
  */
 package Grafo;
 
+import Clases.ListaCliente;
+import Clases.ListaRestaurant;
+import Clases.ListaRutas;
+import Clases.NodoCliente;
+import Clases.NodoRestaurant;
+import Clases.NodoRuta;
+
 /**
  *
  * @author Jose
  */
 public class GrafMatPeso {
-    public static int INFINITO = Integer.MAX_VALUE;
+    public static int INFINITO = 0;
     public int [][] matPeso;
     private Vertice [] verts;
     private int numVerts;
+    
+    public static GrafMatPeso desdeListas(ListaCliente clientes, ListaRestaurant restaurants, ListaRutas rutas) {
+        GrafMatPeso grafo = new GrafMatPeso(100);
+        // Agregamos los clientes primero.
+        if (!clientes.esta_vacia()) {
+            NodoCliente cliente = clientes.getPrimero();
+            while (cliente != null) {
+                grafo.nuevoVertice(new VerticeCliente(cliente));
+                cliente = cliente.getSiguiente();
+            }
+        }
+        
+        // Agregamos restaurants.
+        if (!restaurants.esta_vacia()) {
+            NodoRestaurant restaurant = restaurants.getPrimero();
+            while (restaurant != null) {                
+                grafo.nuevoVertice(new VerticeRestaurant(restaurant));
+                restaurant = restaurant.getSiguiente();
+            }
+        }
+        
+        if (!rutas.esta_vacia()) {
+            NodoRuta ruta = rutas.getPrimero();
+            Vertice[] vertices = grafo.vertices();
+            while (ruta != null) {                
+                Vertice tempOrigen = new Vertice(ruta.getOrigen());
+                Vertice tempDestino = new Vertice(ruta.getDestino());
+                Vertice verticeOrigen = vertices[grafo.numVertice(tempOrigen)];
+                Vertice verticeDestino = vertices[grafo.numVertice(tempDestino)];
+                grafo.nuevoArco(verticeOrigen, verticeDestino, Integer.parseInt(ruta.getDistancia()));
+                ruta = ruta.getSiguiente();
+            }
+        }
+        
+        return grafo;
+    }
+    
     
     /**
     *Constructor de la clase GrafMatPeso

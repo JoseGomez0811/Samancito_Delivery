@@ -11,15 +11,15 @@ package Clases;
  */
 public class NodoRuta {
     private NodoRuta siguiente;
-    private String posicion1;
-    private String posicion2;
-    private String posicion3;
+    private String origen;
+    private String destino;
+    private String distancia;
     
-    public NodoRuta(String posicion1, String posicion2, String posicion3){
+    public NodoRuta(String origen, String destino, String distancia){
         this.siguiente = null;
-        this.posicion1 = posicion1;
-        this.posicion2 = posicion2;
-        this.posicion3 = posicion3;
+        this.origen = origen;
+        this.destino = destino;
+        this.distancia = distancia;
     }
 
     /**
@@ -37,45 +37,45 @@ public class NodoRuta {
     }
 
     /**
-     * @return the posicion1
+     * @return the origen
      */
-    public String getPosicion1() {
-        return posicion1;
+    public String getOrigen() {
+        return origen;
     }
 
     /**
-     * @param posicion1 the posicion1 to set
+     * @param origen the origen to set
      */
-    public void setPosicion1(String posicion1) {
-        this.posicion1 = posicion1;
+    public void setOrigen(String origen) {
+        this.origen = origen;
     }
 
     /**
-     * @return the posicion2
+     * @return the destino
      */
-    public String getPosicion2() {
-        return posicion2;
+    public String getDestino() {
+        return destino;
     }
 
     /**
-     * @param posicion2 the posicion2 to set
+     * @param destino the destino to set
      */
-    public void setPosicion2(String posicion2) {
-        this.posicion2 = posicion2;
+    public void setDestino(String destino) {
+        this.destino = destino;
     }
 
     /**
-     * @return the posicion3
+     * @return the distancia
      */
-    public String getPosicion3() {
-        return posicion3;
+    public String getDistancia() {
+        return distancia;
     }
 
     /**
-     * @param posicion3 the posicion3 to set
+     * @param distancia the distancia to set
      */
-    public void setPosicion3(String posicion3) {
-        this.posicion3 = posicion3;
+    public void setDistancia(String distancia) {
+        this.distancia = distancia;
     }
     
 }

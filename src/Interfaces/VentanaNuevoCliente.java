@@ -13,6 +13,7 @@ import Clases.NodoCliente;
 import Clases.ListaPedidos;
 import Clases.ListaRestaurant;
 import Clases.ListaRutas;
+import Clases.Aplicacion;
 import javax.swing.JOptionPane;
 /**
  *
@@ -26,11 +27,8 @@ public class VentanaNuevoCliente extends javax.swing.JFrame {
     
     ManejoDeData objeto = new ManejoDeData();
     Funciones funcion = new Funciones();
-    GrupoListas grupo_listas = objeto.leer_txt();
+    GrupoListas grupo_listas = Aplicacion.getGrupoListas();
     ListaCliente clientes = grupo_listas.getClientes();
-    ListaPedidos pedidos = grupo_listas.getPedidos();
-    ListaRestaurant restaurantes = grupo_listas.getRestaurantes();
-    ListaRutas rutas = grupo_listas.getRutas();
     
     public VentanaNuevoCliente() {
         initComponents();
@@ -70,12 +68,6 @@ public class VentanaNuevoCliente extends javax.swing.JFrame {
         jLabel4.setText("Cédula:");
 
         jLabel5.setText("Dirección 1:");
-
-        campoNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoNombreActionPerformed(evt);
-            }
-        });
 
         btnRegistrar.setText("Registrar");
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
@@ -152,38 +144,24 @@ public class VentanaNuevoCliente extends javax.swing.JFrame {
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         // TODO add your handling code here:
-        try{
-            String nombre = campoNombre.getText();
-            String apellido = campoApellido.getText();
-            int cedula = Integer.parseInt(campoCedula.getText());
-            if(funcion.esSoloLetras(nombre) && funcion.esSoloLetras(apellido) && nombre.length() > 3 && apellido.length() > 3 ){
-                int n = (clientes.getTamaño() + 1);
-                NodoCliente nuevo_cliente = new NodoCliente(n,nombre,apellido,cedula);
+        String nombre = campoNombre.getText();
+        String apellido = campoApellido.getText();
+        int cedula = Integer.parseInt(campoCedula.getText());
+        if(funcion.esSoloLetras(nombre) && funcion.esSoloLetras(apellido) && nombre.length() > 3 && apellido.length() > 3 ){
+            int n = (clientes.getTamano() + 1);
+            NodoCliente nuevo_cliente = new NodoCliente(n,nombre,apellido,cedula);
+            if (clientes.existePorCedula(cedula)) {
+                JOptionPane.showMessageDialog(this, "Ya existe un cliente con la cédula " + cedula);
+            } else {
                 clientes.agregar_al_final(nuevo_cliente);
-                objeto.guardar_txt(restaurantes, clientes, pedidos, rutas);
-            }else{
-                JOptionPane.showMessageDialog(null,"Por favor ingrese los datos correctos (Nombres y apellidos mayores a 3 caracteres)");
             }
-            
-        }catch(Exception err){
-            JOptionPane.showMessageDialog(null,"Por favor ingrese los datos correctos");
-        
+        }else{
+            JOptionPane.showMessageDialog(null,"Por favor ingrese los datos correctos (Nombres y apellidos mayores a 3 caracteres)");
         }
-        //Object puntoA = campoA.getText();
-        //Object puntoB = campoB.getText();
-      
-        
         campoNombre.setText(null);
         campoApellido.setText(null);
         campoCedula.setText(null);
-        
-         //String puntoA = comboPuntoA.getSelectedItem().toString();
-        //String puntoB = comboPuntoB.getSelectedItem().toString();
     }//GEN-LAST:event_btnRegistrarActionPerformed
-
-    private void campoNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campoNombreActionPerformed
 
     /**
      * @param args the command line arguments

@@ -14,12 +14,12 @@ import javax.swing.JOptionPane;
 public class ListaRutas {
     private NodoRuta primero;
     private NodoRuta ultimo;
-    private int tamaño;
+    private int tamano;
     
     public ListaRutas(){
         this.primero = null;
         this.ultimo = null;
-        this.tamaño = 0;
+        this.tamano = 0;
     }
     
     public boolean esta_vacia(){
@@ -34,7 +34,7 @@ public class ListaRutas {
             ruta.setSiguiente(getPrimero());
             setPrimero(ruta);
         }
-        setTamaño(getTamaño() + 1);
+        setTamano(getTamano() + 1);
     }
     
     public void agregar_al_final(NodoRuta ruta){
@@ -43,7 +43,7 @@ public class ListaRutas {
         }else{
             getUltimo().setSiguiente(ruta);
             setUltimo(ruta);
-            setTamaño(getTamaño() + 1);
+            setTamano(getTamano() + 1);
         }
     }
     
@@ -54,8 +54,8 @@ public class ListaRutas {
             NodoRuta temporal;
             temporal = getPrimero();
             String mostrar_completo = "";
-            for (int i = 0; i < getTamaño(); i ++){
-                mostrar_completo += temporal.getPosicion1() + "," + temporal.getPosicion2() + "," + temporal.getPosicion3() + "\n";
+            for (int i = 0; i < getTamano(); i ++){
+                mostrar_completo += temporal.getOrigen() + "," + temporal.getDestino() + "," + temporal.getDistancia() + "\n";
                 temporal = temporal.getSiguiente();
             }
             JOptionPane.showMessageDialog(null,mostrar_completo);
@@ -91,17 +91,17 @@ public class ListaRutas {
     }
 
     /**
-     * @return the tamaño
+     * @return the tamano
      */
-    public int getTamaño() {
-        return tamaño;
+    public int getTamano() {
+        return tamano;
     }
 
     /**
-     * @param tamaño the tamaño to set
+     * @param tamano the tamano to set
      */
-    public void setTamaño(int tamaño) {
-        this.tamaño = tamaño;
+    public void setTamano(int tamano) {
+        this.tamano = tamano;
     }
     
 }

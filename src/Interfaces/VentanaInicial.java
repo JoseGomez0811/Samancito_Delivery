@@ -92,7 +92,7 @@ public class VentanaInicial extends javax.swing.JFrame {
     private void btnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteActionPerformed
         // TODO add your handling code here:
         
-        VentanaAdmin vencliente = new VentanaAdmin();
+        VentanaCliente vencliente = new VentanaCliente();
         vencliente.setVisible(true);
     }//GEN-LAST:event_btnClienteActionPerformed
 
@@ -103,9 +103,7 @@ public class VentanaInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDriverActionPerformed
 
     private void btnAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdminActionPerformed
-        // TODO add your handling code here:
-        
-        VentanaCliente venadmin = new VentanaCliente();
+        VentanaAdmin venadmin = new VentanaAdmin();
         venadmin.setVisible(true);
     }//GEN-LAST:event_btnAdminActionPerformed
 

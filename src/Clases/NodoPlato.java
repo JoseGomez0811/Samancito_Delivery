@@ -79,4 +79,9 @@ public class NodoPlato {
     public void setIdentificador(int identificador) {
         this.identificador = identificador;
     }
+
+    @Override
+    public String toString() {
+        return platillo;
+    }
 }

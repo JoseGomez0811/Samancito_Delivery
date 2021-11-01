@@ -5,6 +5,7 @@
  */
 package Interfaces;
 
+import Clases.Aplicacion;
 import Grafo.GrafMatPeso;
 import Grafo.Vertice;
 import Grafo.VerticeCliente;
@@ -35,9 +36,9 @@ public class VentanaAdmin extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        agregarPlatosButton = new javax.swing.JButton();
+        eliminarPlatoButton = new javax.swing.JButton();
+        agregarRestauranteButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -45,14 +46,24 @@ public class VentanaAdmin extends javax.swing.JFrame {
 
         jButton1.setText("Agregar Nuevo Camino");
 
-        jButton2.setText("Agregar Platos");
-
-        jButton3.setText("Eliminar Platos");
-
-        jButton4.setText("jButton4");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        agregarPlatosButton.setText("Agregar Platos");
+        agregarPlatosButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                agregarPlatosButtonActionPerformed(evt);
+            }
+        });
+
+        eliminarPlatoButton.setText("Eliminar Platos");
+        eliminarPlatoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarPlatoButtonActionPerformed(evt);
+            }
+        });
+
+        agregarRestauranteButton.setText("Agregar Restaurante");
+        agregarRestauranteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agregarRestauranteButtonActionPerformed(evt);
             }
         });
 
@@ -64,10 +75,10 @@ public class VentanaAdmin extends javax.swing.JFrame {
                 .addContainerGap(50, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(eliminarPlatoButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(agregarPlatosButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(agregarRestauranteButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(50, 50, 50))
         );
         layout.setVerticalGroup(
@@ -76,29 +87,33 @@ public class VentanaAdmin extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addComponent(jLabel1)
                 .addGap(11, 11, 11)
-                .addComponent(jButton4)
+                .addComponent(agregarRestauranteButton)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(agregarPlatosButton)
                 .addGap(40, 40, 40)
-                .addComponent(jButton3)
+                .addComponent(eliminarPlatoButton)
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        GrafMatPeso grafo = new GrafMatPeso(40);
-        Vertice verticeCliente = new VerticeCliente("Test Client");
-        grafo.nuevoVertice(verticeCliente);
-        Vertice verticeLocal = new VerticeRestaurant("Test local");
-        grafo.nuevoVertice(verticeLocal);
-        grafo.nuevoArco(verticeLocal, verticeCliente, 50);
-        MapaGrafo mapaGrafo = MapaGrafoUtils.construirMapa(grafo);
-        mapaGrafo.setVisible(true);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void agregarRestauranteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarRestauranteButtonActionPerformed
+        VentanaAgregarRestaurante ventanaAgregarRestaurante = new VentanaAgregarRestaurante();
+        ventanaAgregarRestaurante.setVisible(true);
+    }//GEN-LAST:event_agregarRestauranteButtonActionPerformed
+
+    private void agregarPlatosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarPlatosButtonActionPerformed
+        VentanaAgregarPlato ventanaAgregarPlato = new VentanaAgregarPlato();
+        ventanaAgregarPlato.setVisible(true);
+    }//GEN-LAST:event_agregarPlatosButtonActionPerformed
+
+    private void eliminarPlatoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarPlatoButtonActionPerformed
+        VentanaEliminarPlato ventanaEliminarPlato = new VentanaEliminarPlato();
+        ventanaEliminarPlato.setVisible(true);
+    }//GEN-LAST:event_eliminarPlatoButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -137,10 +152,10 @@ public class VentanaAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton agregarPlatosButton;
+    private javax.swing.JButton agregarRestauranteButton;
+    private javax.swing.JButton eliminarPlatoButton;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

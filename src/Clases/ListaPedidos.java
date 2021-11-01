@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 public class ListaPedidos {
     private NodoPedido primero;
     private NodoPedido ultimo;
-    private int tamaño;
+    private int tamano;
     
     /**
      * Constructor de la clase LsitaPedidos
@@ -21,7 +21,7 @@ public class ListaPedidos {
     public ListaPedidos(){
         this.primero = null;
         this.ultimo = null;
-        this.tamaño = 0;
+        this.tamano = 0;
     }
     
     /**
@@ -44,7 +44,7 @@ public class ListaPedidos {
             pedido.setAnterior(ultimo);
             ultimo = pedido;
         }
-        tamaño ++;
+        tamano ++;
     }
     
     /**
@@ -57,7 +57,7 @@ public class ListaPedidos {
             NodoPedido temporal;
              temporal = getPrimero();
             String mostrar_completo = "";
-            for (int i = 0; i < getTamaño(); i ++){
+            for (int i = 0; i < getTamano(); i ++){
                 mostrar_completo += temporal.getCliente() + "," + temporal.getRestaurant() + "," + temporal.getOrden() + "\n";
                 temporal = temporal.getSiguiente();
             }
@@ -88,7 +88,7 @@ public class ListaPedidos {
      */
     public void vaciar(){
         this.setPrimero(ultimo = null);
-        this.setTamaño(0);
+        this.setTamano(0);
         
     }
     
@@ -98,7 +98,7 @@ public class ListaPedidos {
      */
     public void eliminarPedido(NodoPedido pedido){
         if (pedido != null){
-            if (tamaño == 1 ){
+            if (tamano == 1 ){
                 this.vaciar();
             }else{
                 if(primero == pedido){
@@ -111,7 +111,7 @@ public class ListaPedidos {
                     pedido.getAnterior().setSiguiente(pedido.getSiguiente());
                     pedido.getSiguiente().setAnterior(pedido.getAnterior());
                 }
-                tamaño --;
+                tamano --;
             }
         }
         
@@ -147,17 +147,17 @@ public class ListaPedidos {
     }
 
     /**
-     * @return the tamaño
+     * @return the tamano
      */
-    public int getTamaño() {
-        return tamaño;
+    public int getTamano() {
+        return tamano;
     }
 
     /**
-     * @param tamaño the tamaño to set
+     * @param tamano the tamano to set
      */
-    public void setTamaño(int tamaño) {
-        this.tamaño = tamaño;
+    public void setTamano(int tamano) {
+        this.tamano = tamano;
     }
     
     

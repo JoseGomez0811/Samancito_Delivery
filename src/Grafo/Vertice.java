@@ -12,6 +12,7 @@ import java.awt.Color;
  * @author Jose
  */
 public class Vertice {
+    String etiqueta;
     String nombre;
     int numeroVertices;
     
@@ -19,18 +20,23 @@ public class Vertice {
      * Constructor de la clase Vertice
      * @param nombre2 El parámetro nombre2 define el nombre del vertice
      */
-    public Vertice(String nombre2){
-        nombre = nombre2;
+    public Vertice(String etiqueta){
+        this(etiqueta, "");
+    }
+    
+    public Vertice(String etiqueta, String nombre) {
+        this.etiqueta = etiqueta;
+        this.nombre = nombre;;
         numeroVertices = -1;
     }
     
-    /**
-     * Método que retorna el nombre del vertice
-     * @return Retorna el nombre del vertice
-     */
-    public String nomVertice(){
-        return nombre;
+    public String getEtiqueta(){
+        return etiqueta;
     }
+
+    public String getNombre() {
+        return nombre;
+     }
     
     /**
      * Método...
@@ -38,7 +44,8 @@ public class Vertice {
      * @return 
      */
     public boolean equals(Vertice n){
-        return nombre.equals(n.nombre);
+        return etiqueta.equals(n.etiqueta);
+
     }
     
     /**
@@ -54,7 +61,7 @@ public class Vertice {
      * @return Retorna el nombre del vertice más el número convertidos en String
      */
     public String toString(){
-        return nombre + "(" + numeroVertices + ")";
+        return etiqueta + "(" + numeroVertices + ")";
     }
 
     /**
@@ -63,6 +70,10 @@ public class Vertice {
      */
     public Color getColorPreferencia() {
         return Color.black;
+    }
+    
+    public int getNumeroVertices() {
+        return numeroVertices;
     }
     
 }

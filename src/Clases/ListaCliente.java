@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 public class ListaCliente {
     private NodoCliente primero;
     private NodoCliente ultimo;
-    private int tamaño;
+    private int tamano;
     
     /**
      * Constructor de la clase ListaCliente
@@ -22,7 +22,7 @@ public class ListaCliente {
     public ListaCliente(){
         this.primero = null;
         this.ultimo = null;
-        this.tamaño = 0;
+        this.tamano = 0;
     }
     
     /**
@@ -45,7 +45,7 @@ public class ListaCliente {
             cliente.setSiguiente(getPrimero());
             setPrimero(cliente);
         }
-        setTamaño(getTamaño() + 1);
+        setTamano(getTamano() + 1);
     }
     
     /**
@@ -58,7 +58,7 @@ public class ListaCliente {
         }else{
             getUltimo().setSiguiente(cliente);
             setUltimo(cliente);
-            setTamaño(getTamaño() + 1);
+            setTamano(getTamano() + 1);
         }
     }
     
@@ -72,7 +72,7 @@ public class ListaCliente {
             NodoCliente temporal;
             temporal = getPrimero();
             String mostrar_completo = "";
-            for (int i = 0; i < getTamaño(); i ++){
+            for (int i = 0; i < getTamano(); i ++){
                 mostrar_completo += temporal.getNombre() + "," + temporal.getApellido() + "," + temporal.getCedula() + "\n";
                 temporal = temporal.getSiguiente();
             }
@@ -109,17 +109,48 @@ public class ListaCliente {
     }
 
     /**
-     * @return the tamaño
+     * @return the tamano
      */
-    public int getTamaño() {
-        return tamaño;
+    public int getTamano() {
+        return tamano;
     }
 
     /**
-     * @param tamaño the tamaño to set
+     * @param tamano the tamano to set
      */
-    public void setTamaño(int tamaño) {
-        this.tamaño = tamaño;
+    public void setTamano(int tamano) {
+        this.tamano = tamano;
+    }
+
+    public boolean existePorCedula(int cedula) {
+        NodoCliente temp = primero;
+        boolean encontrado = false;
+        
+        if (!esta_vacia()) {            
+            while (!encontrado && temp != null) {
+                if (temp.getCedula() == cedula) {
+                    encontrado = true;
+                } else {
+                    temp = temp.getSiguiente();
+                }
+            }
+        }
+        
+        return encontrado;
     }
     
+    public NodoCliente buscarCliente(int identificacion) {
+        NodoCliente cliente = primero;
+        while(cliente != null){
+            if(cliente.getIdentificador() == identificacion){
+                return cliente;
+            }
+            cliente = cliente.getSiguiente();
+        }
+        return null;
+    }
+    
+//    public NodoCliente buscarPorNombre(String nombreCompleto) {
+//        
+//    }
 }

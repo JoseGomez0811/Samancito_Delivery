@@ -100,5 +100,11 @@ public class NodoCliente {
     public void setIdentificador(int identificador) {
         this.identificador = identificador;
     }
+
+    @Override
+    public String toString() {
+        return nombre + " " + apellido;
+    }
+    
     
 }
