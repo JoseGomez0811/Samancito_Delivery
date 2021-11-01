@@ -53,6 +53,7 @@ public class VentanaNuevoCamino extends javax.swing.JFrame {
         campoDistancia = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Samancito Delivey");
 
         jLabel1.setText("AGREGAR NUEVO CAMINO");
 

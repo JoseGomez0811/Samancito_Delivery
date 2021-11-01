@@ -52,6 +52,7 @@ public class VentanaAgregarPlato extends javax.swing.JFrame {
         restaurantComboBox = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Samancito Delivey");
 
         jLabel1.setText("AGREGAR PLATO");
 

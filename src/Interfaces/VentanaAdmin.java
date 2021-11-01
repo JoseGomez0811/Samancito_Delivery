@@ -41,6 +41,7 @@ public class VentanaAdmin extends javax.swing.JFrame {
         agregarRestauranteButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Samancito Delivey");
 
         jLabel1.setText("VENTANA ADMINISTRADOR");
 

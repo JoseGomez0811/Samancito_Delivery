@@ -53,6 +53,7 @@ public class VentanaEliminarPlato extends javax.swing.JFrame {
         platoComboBox = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Samancito Delivey");
 
         jLabel1.setText("ELIMINAR PLATO");
 

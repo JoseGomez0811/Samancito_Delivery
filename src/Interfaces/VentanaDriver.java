@@ -69,6 +69,7 @@ public class VentanaDriver extends javax.swing.JFrame implements ListSelectionLi
         campoOrden = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Samancito Delivey");
 
         jLabel1.setText("DRIVER");
 
@@ -83,7 +84,6 @@ public class VentanaDriver extends javax.swing.JFrame implements ListSelectionLi
 
         tablaPedidos.setModel(new javax.swing.table.DefaultTableModel(getPedidosModel(), new String[] {"Restaurante", "Cliente", "Pedido"})
         );
-        tablaPedidos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tablaPedidos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tablaPedidos.getSelectionModel().addListSelectionListener(this);
         jScrollPane1.setViewportView(tablaPedidos);

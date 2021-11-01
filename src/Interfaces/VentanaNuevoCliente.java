@@ -58,6 +58,7 @@ public class VentanaNuevoCliente extends javax.swing.JFrame {
         campoB = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Samancito Delivey");
 
         jLabel1.setText("REGISTRO NUEVO CLIENTE");
 
