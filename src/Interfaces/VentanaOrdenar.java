@@ -66,7 +66,7 @@ public class VentanaOrdenar extends javax.swing.JFrame {
         jLabel3.setText("Menú:");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Samancito Delivey");
+        setTitle("Samancito Delivery");
 
         jLabel1.setText("Restaurante:");
 

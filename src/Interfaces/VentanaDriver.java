@@ -69,7 +69,7 @@ public class VentanaDriver extends javax.swing.JFrame implements ListSelectionLi
         campoOrden = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Samancito Delivey");
+        setTitle("Samancito Delivery");
 
         jLabel1.setText("DRIVER");
 

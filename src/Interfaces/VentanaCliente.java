@@ -33,7 +33,7 @@ public class VentanaCliente extends javax.swing.JFrame {
         btnOrdenar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Samancito Delivey");
+        setTitle("Samancito Delivery");
 
         jLabel1.setText("VENTANA CLIENTE");
 

@@ -61,7 +61,7 @@ public class VentanaAgregarRestaurante extends javax.swing.JFrame {
         distanciaVertice1 = new javax.swing.JSpinner();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Samancito Delivey");
+        setTitle("Samancito Delivery");
 
         jLabel1.setText("AGREGAR RESTAURANT");
 
