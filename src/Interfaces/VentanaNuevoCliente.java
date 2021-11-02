@@ -14,6 +14,12 @@ import Clases.ListaPedidos;
 import Clases.ListaRestaurant;
 import Clases.ListaRutas;
 import Clases.Aplicacion;
+import Grafo.Vertice;
+import java.awt.Component;
+import java.util.Arrays;
+import javax.swing.DefaultListCellRenderer;
+import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 /**
  *
@@ -54,8 +60,11 @@ public class VentanaNuevoCliente extends javax.swing.JFrame {
         campoCedula = new javax.swing.JTextField();
         btnRegistrar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        campoA = new javax.swing.JTextField();
-        campoB = new javax.swing.JTextField();
+        verticeComboBox1 = new javax.swing.JComboBox<>();
+        verticeComboBox2 = new javax.swing.JComboBox<>();
+        distanciaSpinner1 = new javax.swing.JSpinner();
+        distanciaSpinner2 = new javax.swing.JSpinner();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Samancito Delivery");
@@ -79,6 +88,18 @@ public class VentanaNuevoCliente extends javax.swing.JFrame {
 
         jLabel6.setText("Dirección 2:");
 
+        verticeComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(getVerticeComboBoxModel()));
+        verticeComboBox1.setRenderer(new VerticeListRenderer());
+
+        verticeComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(getVerticeComboBoxModel()));
+        verticeComboBox2.setRenderer(new VerticeListRenderer());
+
+        distanciaSpinner1.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+
+        distanciaSpinner2.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+
+        jLabel7.setText("Distancia");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -92,23 +113,31 @@ public class VentanaNuevoCliente extends javax.swing.JFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jLabel6))
-                            .addGap(20, 20, 20)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(campoB, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
-                                .addComponent(campoA))
-                            .addGap(10, 10, 10)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel2))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(campoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(campoApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(campoCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))))
-                .addContainerGap(40, Short.MAX_VALUE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(3, 3, 3)
+                                    .addComponent(verticeComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(verticeComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGap(18, 18, 18)
+                            .addComponent(distanciaSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(2, 2, 2)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(distanciaSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel4)
+                                .addComponent(jLabel2))
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(campoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(campoApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(campoCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel1)))
+                        .addComponent(jLabel7)))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,15 +156,19 @@ public class VentanaNuevoCliente extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(campoCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel7)
+                .addGap(3, 3, 3)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(campoA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(verticeComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(distanciaSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(campoB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                    .addComponent(verticeComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(distanciaSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addComponent(btnRegistrar)
                 .addGap(36, 36, 36))
         );
@@ -144,26 +177,37 @@ public class VentanaNuevoCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        // TODO add your handling code here:
         String nombre = campoNombre.getText();
         String apellido = campoApellido.getText();
         int cedula = Integer.parseInt(campoCedula.getText());
+        Vertice vertice1 = (Vertice) verticeComboBox1.getSelectedItem();
+        Vertice vertice2 = (Vertice) verticeComboBox2.getSelectedItem();
+        int dist1 = (Integer) distanciaSpinner1.getValue();
+        int dist2 = (Integer) distanciaSpinner2.getValue();
         if(funcion.esSoloLetras(nombre) && funcion.esSoloLetras(apellido) && nombre.length() > 3 && apellido.length() > 3 ){
             int n = (clientes.getTamano() + 1);
             NodoCliente nuevo_cliente = new NodoCliente(n,nombre,apellido,cedula);
             if (clientes.existePorCedula(cedula)) {
                 JOptionPane.showMessageDialog(this, "Ya existe un cliente con la cédula " + cedula);
             } else {
-                clientes.agregar_al_final(nuevo_cliente);
+                Vertice clienteNuevo = Aplicacion.agregarVerticeCliente(nuevo_cliente);
+                Aplicacion.agregarRuta(clienteNuevo, vertice1, dist1);
+                Aplicacion.agregarRuta(clienteNuevo, vertice2, dist2);
+                JOptionPane.showMessageDialog(this, "Cliente agregado con éxito");
+                dispose();
             }
         }else{
-            JOptionPane.showMessageDialog(null,"Por favor ingrese los datos correctos (Nombres y apellidos mayores a 3 caracteres)");
+            JOptionPane.showMessageDialog(this, "Por favor ingrese los datos correctos (Nombres y apellidos mayores a 3 caracteres)");
         }
         campoNombre.setText(null);
         campoApellido.setText(null);
         campoCedula.setText(null);
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
+    private Vertice[] getVerticeComboBoxModel() {
+        return Arrays.copyOfRange(Aplicacion.getGrafo().vertices(), 0, Aplicacion.getGrafo().numeroDeVertice());
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -201,16 +245,30 @@ public class VentanaNuevoCliente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegistrar;
-    private javax.swing.JTextField campoA;
     private javax.swing.JTextField campoApellido;
-    private javax.swing.JTextField campoB;
     private javax.swing.JTextField campoCedula;
     private javax.swing.JTextField campoNombre;
+    private javax.swing.JSpinner distanciaSpinner1;
+    private javax.swing.JSpinner distanciaSpinner2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JComboBox<Vertice> verticeComboBox1;
+    private javax.swing.JComboBox<Vertice> verticeComboBox2;
     // End of variables declaration//GEN-END:variables
+
+    private class VerticeListRenderer extends DefaultListCellRenderer {
+
+        @Override
+        public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+            JLabel componente = (JLabel) super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus); //To change body of generated methods, choose Tools | Templates.
+            componente.setText(((Vertice) value).getNombre());
+            return componente;
+        }
+        
+    }
 }
