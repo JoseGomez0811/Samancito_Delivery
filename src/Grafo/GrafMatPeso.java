@@ -22,6 +22,7 @@ public class GrafMatPeso {
     private Vertice [] verts;
     private int numVerts;
     
+    
     public static GrafMatPeso desdeListas(ListaCliente clientes, ListaRestaurant restaurants, ListaRutas rutas) {
         GrafMatPeso grafo = new GrafMatPeso(100);
         // Agregamos los clientes primero.
@@ -61,7 +62,7 @@ public class GrafMatPeso {
     
     /**
     *Constructor de la clase GrafMatPeso
-    *@param mx El parámetro mx define
+    *@param mx El parámetro mx define la dimensión de la matriz de adyacencia
     */
     public GrafMatPeso(int mx){
         matPeso = new int [mx][mx];
@@ -75,7 +76,7 @@ public class GrafMatPeso {
     }
     
     /**
-     * Método que construye un nuevo vertice en el grafo
+     * Método que incrementa el número de vertices 
      * @param vertice El parámetro vertice define el vertice que se desea
      * agregar al grafo
      */
@@ -109,8 +110,8 @@ public class GrafMatPeso {
     }
     
     /**
-     * Método que 
-     * @return 
+     * Método que devuelve los vertices creados
+     * @return Retorna los vertices
      */
     public Vertice[] vertices(){
         return verts;
@@ -145,7 +146,7 @@ public class GrafMatPeso {
     }
     
     /**
-     * Método 
+     * Método que obtiene el peso del grafo 
      * @return 
      */
     public int [][] getMatPeso(){

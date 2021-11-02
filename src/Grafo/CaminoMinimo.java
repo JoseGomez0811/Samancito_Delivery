@@ -95,6 +95,11 @@ public class CaminoMinimo {
 //            return pasos;
 //        }
 //    }
+    
+    /**
+     * Método que permite volver hacia atrás y reconstruir un camino a través de la recursividad
+     * @param v El parámetro v define
+     */
     public void recuperaCamino(int v)
     {
         int anterior = ultimo[v];

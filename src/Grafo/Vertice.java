@@ -24,6 +24,11 @@ public class Vertice {
         this(etiqueta, "");
     }
     
+    /**
+     * Método que representa un nodo del grafo
+     * @param etiqueta
+     * @param nombre 
+     */
     public Vertice(String etiqueta, String nombre) {
         this.etiqueta = etiqueta;
         this.nombre = nombre;;
