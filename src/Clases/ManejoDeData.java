@@ -6,11 +6,8 @@
 package Clases;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.FileReader;
-import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import javax.swing.JOptionPane;
 /**
@@ -19,22 +16,26 @@ import javax.swing.JOptionPane;
  */
 public class ManejoDeData {
     
-    File masterdata = new File("test\\samancito.txt");
+    private File masterdata;
     
     /**
      * Constructor de la clase ManejoDeData
      */
-    public ManejoDeData(){
+    public ManejoDeData(File masterdata) {
+        this.masterdata = masterdata;
+    }
+    
+    public ManejoDeData() {
+        this(new File("test\\samancito.txt"));
     }
     
     /**
      * Método que lee el arcivo MasterData.txt
      */
-    public GrupoListas leer_txt(){
+    public GrupoListas leer_txt() {
         String linea;
         String txt = "";
-        String path = "test\\samancito.txt";
-        File file = new File(path);
+        File file = masterdata;
         ListaRestaurant restaurantes = new ListaRestaurant();
         ListaCliente clientes = new ListaCliente();
         ListaPedidos pedidos = new ListaPedidos();
@@ -156,7 +157,7 @@ public class ManejoDeData {
             }
         }
         try{
-            PrintWriter pw = new PrintWriter("test\\samancito.txt");
+            PrintWriter pw = new PrintWriter(masterdata.getAbsolutePath());
             pw.print("Restaurantes");
             pw.print("\n");
             pw.print(restaurantes_actuales);

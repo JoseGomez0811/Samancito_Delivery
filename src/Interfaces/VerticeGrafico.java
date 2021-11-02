@@ -48,7 +48,7 @@ public class VerticeGrafico {
             g2.drawOval((int) (puntoOrigen.x - DIAMETRO / 2), (int) (puntoOrigen.y - DIAMETRO / 2), (int)DIAMETRO, (int)DIAMETRO);
             g2.setStroke(lastStroke);
         }
-        String etiqueta = vertice.getEtiqueta();
+        String etiqueta = vertice.getNombre();
         // Imprimir la etiqueta centrada en el círculo
         FontMetrics fm = g2.getFontMetrics();
         double textWidth = fm.getStringBounds(etiqueta, g2).getWidth();

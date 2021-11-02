@@ -13,9 +13,10 @@ import Interfaces.VentanaInicial;
 import java.awt.EventQueue;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.lang.reflect.InvocationTargetException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.io.File;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -30,24 +31,22 @@ public class Aplicacion {
      */
     public static void main(String[] args) {
         // Inicialización de la data contenida en el txt.
-        mdd = new ManejoDeData();
-        grupoListas = mdd.leer_txt();
-        // Ahora todas las clases pueden acceder a las listas con Aplicacion.getGrupoListas()
-        // Inicializamos grafo
-        grafo = GrafMatPeso.desdeListas(grupoListas.getClientes(), grupoListas.getRestaurantes(), grupoListas.getRutas());
-        // Inicializamos ventana inicial
-        VentanaInicial ventanaInicial = new VentanaInicial();
-        try {
-            EventQueue.invokeAndWait(new Runnable() {
+        File masterdata = cargarMasterdata();
+        if (masterdata != null) {
+            mdd = new ManejoDeData(masterdata);
+            grupoListas = mdd.leer_txt();
+            // Ahora todas las clases pueden acceder a las listas con Aplicacion.getGrupoListas()
+            // Inicializamos grafo
+            grafo = GrafMatPeso.desdeListas(grupoListas.getClientes(), grupoListas.getRestaurantes(), grupoListas.getRutas());
+            // Inicializamos ventana inicial
+            VentanaInicial ventanaInicial = new VentanaInicial();
+            EventQueue.invokeLater(new Runnable() {
                 @Override
                 public void run() {
                     ventanaInicial.setVisible(true);
-                    ventanaInicial.addWindowListener(new AdaptadorVentana());
+                    ventanaInicial.addWindowListener(new AdaptadorVentanaInicial());
                 }
             });
-        } catch (InterruptedException | InvocationTargetException ex) {
-            System.out.println("Ejecución interrumpida");
-            System.out.println(ex.getMessage());
         }
     }
 
@@ -58,10 +57,24 @@ public class Aplicacion {
     public static GrafMatPeso getGrafo() {
         return grafo;
     }
+
+    private static File cargarMasterdata() {
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setAcceptAllFileFilterUsed(false);
+        fileChooser.setFileFilter(new FileNameExtensionFilter("Archivos de texto (TXT)", "txt"));
+        fileChooser.showOpenDialog(null);
+        File archivo = fileChooser.getSelectedFile();
+        if (archivo != null) {
+            return archivo;
+        }
+    
+        JOptionPane.showMessageDialog(null, "Asegúrese de seleccionar un archivo");
+        return null;
+    }
     
     
  
-    private static class AdaptadorVentana extends WindowAdapter {
+    private static class AdaptadorVentanaInicial extends WindowAdapter {
 
         @Override
         public void windowClosing(WindowEvent e) {
@@ -69,7 +82,7 @@ public class Aplicacion {
         }
         
     }
-    
+  
     /**
      * Método que agrega un restaurante tanto al grafo como a la lista de restaurantes
      * @param nodoRestaurant El parámetro nodoRestaurant define el elemento que se desea agregar
