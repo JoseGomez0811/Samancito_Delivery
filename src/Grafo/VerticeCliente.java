@@ -16,19 +16,31 @@ public class VerticeCliente extends Vertice {
     
     private NodoCliente cliente;
     
+    /**
+     * 
+     */
     public VerticeCliente(String etiqueta) {
         super(etiqueta);
     }
 
+    /**
+     * 
+     */
     public VerticeCliente(NodoCliente cliente) {
         super(String.valueOf(cliente.getIdentificador()), cliente.getNombre() + " " + cliente.getApellido());
         this.cliente = cliente;
     }
 
+    /**
+     * Método que obtiene la información del cliente
+     */
     public NodoCliente getCliente() {
         return cliente;
     }
 
+    /**
+     * Método que define la información del cliente
+     */
     public void setCliente(NodoCliente cliente) {
         this.cliente = cliente;
     }

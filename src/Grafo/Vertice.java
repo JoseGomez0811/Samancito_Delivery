@@ -24,24 +24,35 @@ public class Vertice {
         this(etiqueta, "");
     }
     
+    /**
+     * Método que representa un nodo del grafo
+     * @param etiqueta
+     * @param nombre 
+     */
     public Vertice(String etiqueta, String nombre) {
         this.etiqueta = etiqueta;
         this.nombre = nombre;;
         numeroVertices = -1;
     }
     
+    /**
+     * Método que obtiene la informacion de la etiqueta
+     */
     public String getEtiqueta(){
         return etiqueta;
     }
 
+    /**
+     * Método que obtiene la inforamción del nombre
+     */
     public String getNombre() {
         return nombre;
      }
     
     /**
-     * Método...
+     * Método que determina si dos etiquetas son iguales
      * @param n
-     * @return 
+     * @return Retorna true si son iguales y false si no lo son
      */
     public boolean equals(Vertice n){
         return etiqueta.equals(n.etiqueta);
@@ -49,7 +60,7 @@ public class Vertice {
     }
     
     /**
-     * Método que asigna...
+     * Método que asigna agsigna un vertice
      * @param n 
      */
     public void asignarVertices(int n){
