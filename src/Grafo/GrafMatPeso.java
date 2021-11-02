@@ -22,7 +22,12 @@ public class GrafMatPeso {
     private Vertice [] verts;
     private int numVerts;
     
-    
+    /**
+     * Método qu econstruye el grafo
+     * @param clientes El parámetro clientes define la información almacenada en la lista de clientes
+     * @param restaurants El parámetro restaurants define la información almacenada en la lista de restaurantes
+     * @param rutas El parámetro rutas define la información almacendad en la lista de las rutas
+     */
     public static GrafMatPeso desdeListas(ListaCliente clientes, ListaRestaurant restaurants, ListaRutas rutas) {
         GrafMatPeso grafo = new GrafMatPeso(100);
         // Agregamos los clientes primero.
@@ -147,7 +152,7 @@ public class GrafMatPeso {
     
     /**
      * Método que obtiene el peso del grafo 
-     * @return 
+     * @return Retorna el peso del grafo
      */
     public int [][] getMatPeso(){
         return matPeso;

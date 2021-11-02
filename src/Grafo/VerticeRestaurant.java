@@ -29,10 +29,16 @@ public class VerticeRestaurant extends Vertice {
         return restaurant;
     }
 
+    /**
+     * Método que define la información de los restaurantes
+     */
     public void setRestaurante(NodoRestaurant restaurant) {
         this.restaurant = restaurant;
     }
 
+    /**
+     * Método que obtiene la información de los restaurantes
+     */
     public NodoRestaurant getRestaurant() {
         return restaurant;
     }
