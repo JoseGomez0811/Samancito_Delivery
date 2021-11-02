@@ -41,6 +41,7 @@ public class VentanaAdmin extends javax.swing.JFrame {
         agregarRestauranteButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Samancito Delivery");
 
         jLabel1.setText("VENTANA ADMINISTRADOR");
 
@@ -121,7 +122,7 @@ public class VentanaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_eliminarPlatoButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here:     
         VentanaNuevoCamino venNuevoCamino = new VentanaNuevoCamino();
         venNuevoCamino.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed

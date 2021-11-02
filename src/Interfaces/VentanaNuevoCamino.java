@@ -54,6 +54,7 @@ public class VentanaNuevoCamino extends javax.swing.JFrame {
         campoDistancia = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Samancito Delivery");
 
         jLabel1.setText("AGREGAR NUEVO CAMINO");
 
@@ -122,8 +123,7 @@ public class VentanaNuevoCamino extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        // TODO add your handling code here:
-        
+        // TODO add your handling code here:    
         try{
             Object puntoA = campoA.getText();
             Object puntoB = campoB.getText();

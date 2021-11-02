@@ -34,6 +34,7 @@ public class VentanaInicial extends javax.swing.JFrame {
         btnAdmin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Samancito Delivery");
 
         jLabel1.setText("TIPO DE USUARIO");
 

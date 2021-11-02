@@ -7,6 +7,7 @@ package Clases;
 
 import Grafo.GrafMatPeso;
 import Grafo.Vertice;
+import Grafo.VerticeCliente;
 import Grafo.VerticeRestaurant;
 import Interfaces.VentanaInicial;
 import java.awt.EventQueue;
@@ -93,5 +94,12 @@ public class Aplicacion {
         grafo.nuevoArco(a, b, distancia);
         grupoListas.getRutas().agregar_al_final(nodoRuta);
         return nodoRuta;
+    }
+    
+    public static Vertice agregarVerticeCliente(NodoCliente nodoCliente) {
+        Vertice verticeCliente = new VerticeCliente(nodoCliente);
+        grafo.nuevoVertice(verticeCliente);
+        grupoListas.getClientes().agregar_al_final(nodoCliente);
+        return verticeCliente;
     }
 }
